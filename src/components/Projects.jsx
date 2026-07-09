@@ -13,24 +13,91 @@ const ExternalLinkIcon = () => (
   </svg>
 );
 
+// Shared visual variants for every project action button, so each link only
+// needs to declare *which* style it wants instead of repeating the classes.
+const LINK_VARIANTS = {
+  outline: 'bg-white/10 border border-white/20 text-white hover:bg-white hover:text-black',
+  outlineSoft: 'bg-white/10 border border-white/20 text-white hover:bg-white/20',
+  primary:
+    'bg-gradient-to-r from-[#6d5bf5] to-[#22d3ee] text-white hover:brightness-110 hover:shadow-[0_0_20px_rgba(139,108,247,0.45)]',
+  disabled: 'bg-white/5 text-white/40 border border-white/10 cursor-not-allowed',
+};
+
+const ProjectLink = ({ href, label, icon, variant, disabled }) => (
+  <a
+    href={disabled ? undefined : href}
+    target={disabled ? undefined : '_blank'}
+    rel={disabled ? undefined : 'noopener noreferrer'}
+    aria-disabled={disabled || undefined}
+    className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${LINK_VARIANTS[disabled ? 'disabled' : variant]}`}
+  >
+    {icon}
+    {label}
+  </a>
+);
+
+// Builds the list of action buttons for a project from whichever link fields
+// are actually present — the JSX below just maps over this, instead of four
+// hand-written conditional blocks.
+const getProjectLinks = (project) => {
+  const links = [];
+
+  if (project.links.github) {
+    links.push({ key: 'github', href: project.links.github, label: 'GitHub', icon: <GitHubIcon />, variant: 'outline' });
+  }
+
+  if (project.links.demo !== undefined) {
+    links.push({
+      key: 'demo',
+      href: project.links.demo || '#',
+      label: project.links.demo ? 'Live Demo' : 'Demo Coming Soon',
+      icon: <ExternalLinkIcon />,
+      variant: 'primary',
+      disabled: !project.links.demo,
+    });
+  }
+
+  if (project.links.frontendDemo) {
+    links.push({
+      key: 'frontendDemo',
+      href: project.links.frontendDemo,
+      label: 'Frontend Demo',
+      icon: <ExternalLinkIcon />,
+      variant: 'primary',
+    });
+  }
+
+  if (project.links.backendApi) {
+    links.push({
+      key: 'backendApi',
+      href: project.links.backendApi,
+      label: 'Backend API',
+      icon: <ExternalLinkIcon />,
+      variant: 'outlineSoft',
+    });
+  }
+
+  return links;
+};
+
 const ProjectCard = ({ project, aosDelay }) => (
-  <div 
+  <div
     data-aos="fade-up"
     data-aos-delay={aosDelay}
-    className={`relative rounded-2xl p-[1px] group transition-all duration-500 ${
-      project.isFlagship 
-        ? 'bg-gradient-to-br from-red-500/50 via-white/10 to-red-500/30 hover:from-red-500 hover:via-red-400/30 hover:to-red-500/60' 
+    className={`relative rounded-2xl p-[1px] group transition-all duration-500 hover:-translate-y-1 ${
+      project.isFlagship
+        ? 'bg-gradient-to-br from-[#8b6cf7]/50 via-white/10 to-[#22d3ee]/30 hover:from-[#8b6cf7] hover:via-[#22d3ee]/40 hover:to-[#8b6cf7]/60'
         : 'bg-white/10 hover:bg-white/20'
     }`}
   >
-    <div className={`rounded-2xl p-6 md:p-8 h-full backdrop-blur-md transition-all duration-500 ${
-      project.isFlagship 
-        ? 'bg-[#0f0f0f]/95 group-hover:bg-[#0f0f0f]/90' 
-        : 'bg-[#111111]/90 group-hover:bg-[#111111]/80'
-    }`}>
+    <div
+      className={`rounded-2xl p-6 md:p-8 h-full backdrop-blur-md transition-all duration-500 ${
+        project.isFlagship ? 'bg-[#0f0f14]/95 group-hover:bg-[#0f0f14]/90' : 'bg-[#111117]/90 group-hover:bg-[#111117]/80'
+      }`}
+    >
       {/* Badge */}
       {project.badge && (
-        <span className="inline-block text-xs font-bold tracking-widest uppercase text-red-400 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20 mb-4">
+        <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#8b6cf7] bg-[#8b6cf7]/10 px-3 py-1 rounded-full border border-[#8b6cf7]/20 mb-4">
           {project.badge}
         </span>
       )}
@@ -49,72 +116,20 @@ const ProjectCard = ({ project, aosDelay }) => (
       {/* Tech Tags */}
       <div className="flex flex-wrap gap-2 mb-8">
         {project.techTags.map((tag) => (
-          <span 
+          <span
             key={tag}
-            className="px-3 py-1 text-xs font-bold text-white/70 bg-white/5 rounded-full border border-white/10 hover:bg-red-500/20 hover:border-red-500/30 hover:text-red-300 transition-all duration-300 cursor-default"
+            className="px-3 py-1 text-xs font-bold text-white/70 bg-white/5 rounded-full border border-white/10 hover:bg-[#22d3ee]/20 hover:border-[#22d3ee]/30 hover:text-[#7dd8ea] transition-all duration-300 cursor-default"
           >
             {tag}
           </span>
         ))}
       </div>
 
-      {/* Action Buttons */}
+      {/* Action Buttons — data-driven, see getProjectLinks() */}
       <div className="flex flex-wrap gap-3">
-        {/* GitHub */}
-        {project.links.github && (
-          <a 
-            href={project.links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold hover:bg-white hover:text-black transition-all duration-300 group/btn"
-          >
-            <GitHubIcon />
-            GitHub
-          </a>
-        )}
-
-        {/* Live Demo (single) */}
-        {project.links.demo !== undefined && (
-          <a 
-            href={project.links.demo || '#'}
-            target={project.links.demo ? "_blank" : undefined}
-            rel={project.links.demo ? "noopener noreferrer" : undefined}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-              project.links.demo 
-                ? 'bg-[#ff2a2a] text-white hover:bg-red-600 hover:shadow-[0_0_20px_rgba(255,42,42,0.4)]' 
-                : 'bg-white/5 text-white/40 border border-white/10 cursor-not-allowed'
-            }`}
-          >
-            <ExternalLinkIcon />
-            {project.links.demo ? 'Live Demo' : 'Demo Coming Soon'}
-          </a>
-        )}
-
-        {/* Frontend Demo (Karigar) */}
-        {project.links.frontendDemo && (
-          <a 
-            href={project.links.frontendDemo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#ff2a2a] text-white text-sm font-semibold hover:bg-red-600 hover:shadow-[0_0_20px_rgba(255,42,42,0.4)] transition-all duration-300"
-          >
-            <ExternalLinkIcon />
-            Frontend Demo
-          </a>
-        )}
-
-        {/* Backend API (Karigar) */}
-        {project.links.backendApi && (
-          <a 
-            href={project.links.backendApi}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-semibold hover:bg-white/20 transition-all duration-300"
-          >
-            <ExternalLinkIcon />
-            Backend API
-          </a>
-        )}
+        {getProjectLinks(project).map(({ key, ...linkProps }) => (
+          <ProjectLink key={key} {...linkProps} />
+        ))}
       </div>
     </div>
   </div>
@@ -122,16 +137,26 @@ const ProjectCard = ({ project, aosDelay }) => (
 
 const Projects = () => {
   return (
-    <section id="projects" className="bg-[#0a0a0a] pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:80px_80px]">
-      <div className="max-w-6xl mx-auto">
-        
+    <section
+      id="projects"
+      className="bg-[#0a0a12] pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:80px_80px]"
+    >
+      {/* Ambient glow accents — ties this section back to the rest of the site */}
+      <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#6d5bf5]/10 rounded-full blur-[120px] pointer-events-none projects-orb" />
+      <div
+        className="absolute bottom-1/4 right-10 w-96 h-96 bg-[#22d3ee]/10 rounded-full blur-[120px] pointer-events-none projects-orb"
+        style={{ animationDelay: '-6s', animationDirection: 'reverse' }}
+      />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div data-aos="fade-up" className="mb-16 md:mb-20">
           <div className="inline-block border border-white/20 rounded-full px-5 py-1.5 text-sm text-white/60 font-bold mb-8 shadow-sm bg-white/5 backdrop-blur-sm">
             Featured Projects
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6 tracking-tight">
-            Work that speaks <br className="hidden md:block" />for itself
+            Work that speaks <br className="hidden md:block" />
+            for itself
           </h2>
           <p className="text-white/50 text-base md:text-lg max-w-lg font-medium leading-relaxed">
             A selection of projects that showcase my expertise in full-stack development and modern architecture.
@@ -141,11 +166,7 @@ const Projects = () => {
         {/* Project Cards */}
         <div className="flex flex-col gap-6 md:gap-8">
           {projects.map((project, index) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              aosDelay={String((index + 1) * 100)}
-            />
+            <ProjectCard key={project.id} project={project} aosDelay={(index + 1) * 100} />
           ))}
         </div>
 
@@ -155,16 +176,32 @@ const Projects = () => {
             href={socialLinks.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-white font-bold text-lg hover:bg-white hover:text-black hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-all duration-500 group"
+            className="flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-white font-bold text-lg hover:bg-white hover:text-black hover:border-[#8b6cf7]/40 hover:shadow-[0_0_30px_rgba(139,108,247,0.25)] transition-all duration-500 group"
           >
             <GitHubIcon />
             Explore All My Repositories
-            <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </a>
         </div>
       </div>
+
+      <style>{`
+        .projects-orb { animation: projects-orb-drift 15s ease-in-out infinite; }
+        @keyframes projects-orb-drift {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50%      { transform: translate(4%, -4%) scale(1.1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .projects-orb { animation: none; }
+        }
+      `}</style>
     </section>
   );
 };

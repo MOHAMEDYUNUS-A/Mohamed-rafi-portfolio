@@ -1,3 +1,287 @@
+/* ============================================================
+   HERO STYLE FIX — Mohamed Yunus Portfolio
+   Paste this at the bottom of your main CSS file
+   ============================================================ */
+
+/* Main hero section */
+.hero,
+.hero-section,
+#hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Dark overlay for better text readability */
+.hero::before,
+.hero-section::before,
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.46) 42%,
+    rgba(0, 0, 0, 0.22) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Keep hero content above image/video */
+.hero > *,
+.hero-section > *,
+#hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero content spacing */
+.hero-content,
+.hero .content,
+.hero-text,
+.hero-left,
+.banner-content {
+  max-width: 720px;
+  padding-left: 32px;
+  padding-right: 24px;
+}
+
+/* Main name heading */
+.hero h1,
+.hero-title,
+.banner-title {
+  color: #ffffff !important;
+  font-size: clamp(42px, 6vw, 82px);
+  line-height: 1.02;
+  font-weight: 900;
+  letter-spacing: -2.5px;
+  margin: 0 0 10px;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* Fix black outline role text */
+.hero h2,
+.hero-subtitle-title,
+.hero-role,
+.outline-text,
+.stroke-text {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-text-stroke: 0px transparent !important;
+  text-stroke: 0px transparent !important;
+  font-size: clamp(34px, 5vw, 74px);
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin: 0 0 22px;
+  opacity: 1 !important;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* Hero paragraph */
+.hero p,
+.hero-description,
+.hero-subtitle,
+.banner-description {
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.96) !important;
+  font-size: clamp(17px, 2vw, 22px);
+  line-height: 1.55;
+  font-weight: 700;
+  margin: 0 0 32px;
+  text-shadow: 0 5px 18px rgba(0, 0, 0, 0.45);
+}
+
+/* Hero buttons container */
+.hero-buttons,
+.hero-actions,
+.cta-buttons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Hero buttons */
+.hero button,
+.hero a,
+.hero-section button,
+.hero-section a,
+#hero button,
+#hero a {
+  transition: all 0.3s ease;
+}
+
+/* Button styling */
+.hero .btn,
+.hero-button,
+.cta-btn,
+.hero-actions a,
+.hero-buttons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+}
+
+/* First button white */
+.hero .btn:first-child,
+.hero-button:first-child,
+.hero-actions a:first-child,
+.hero-buttons a:first-child {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: #ffffff !important;
+}
+
+/* Button hover */
+.hero .btn:hover,
+.hero-button:hover,
+.cta-btn:hover,
+.hero-actions a:hover,
+.hero-buttons a:hover {
+  transform: translateY(-3px);
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar glass effect */
+.navbar,
+header,
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  background: rgba(8, 12, 22, 0.25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Brand name */
+.navbar .logo,
+.logo,
+.brand,
+.site-logo {
+  color: #ffffff !important;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-shadow: 0 5px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Navbar links */
+.navbar a,
+header a,
+.site-header a {
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-weight: 700;
+}
+
+.navbar a:hover,
+header a:hover,
+.site-header a:hover {
+  color: #ffffff !important;
+}
+
+/* Hire Me button */
+.hire-btn,
+.hire-button,
+.navbar .hire-me,
+header .hire-me {
+  border: 1.5px solid rgba(255, 255, 255, 0.55) !important;
+  border-radius: 999px !important;
+  padding: 13px 26px !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.hire-btn:hover,
+.hire-button:hover,
+.navbar .hire-me:hover,
+header .hire-me:hover {
+  background: #ffffff !important;
+  color: #111111 !important;
+}
+
+/* Social icons */
+.social-icons,
+.hero-socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.social-icons a,
+.hero-socials a {
+  color: rgba(255, 255, 255, 0.86) !important;
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+.social-icons a:hover,
+.hero-socials a:hover {
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+/* Play / Pause floating button */
+.play-reel,
+.pause-btn,
+.video-control,
+.reel-control {
+  position: fixed;
+  right: 52px;
+  bottom: 86px;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.38);
+  background: rgba(36, 38, 45, 0.72);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+}
+
+.play-reel:hover,
+.pause-btn:hover,
+.video-control:hover,
+.reel-control:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Fix old counter code safely */
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -7,178 +291,96 @@
   border: 2px solid transparent;
   transition: border-color 0.3s;
   margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+.counter:hover {
+  border-color: var(--accent-border);
 }
 
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+.counter:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
+/* Mobile responsive fix */
+@media (max-width: 768px) {
+  .hero,
+  .hero-section,
+  #hero {
+    min-height: 100vh;
+    align-items: flex-end;
+    padding-top: 90px;
+    padding-bottom: 60px;
   }
 
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
+  .hero::before,
+  .hero-section::before,
+  #hero::before {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.38) 0%,
+      rgba(0, 0, 0, 0.6) 45%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
   }
 
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
+  .hero-content,
+  .hero .content,
+  .hero-text,
+  .hero-left,
+  .banner-content {
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 100%;
   }
 
-  a {
-    color: var(--text-h);
+  .hero h1,
+  .hero-title,
+  .banner-title {
+    font-size: 42px;
+    letter-spacing: -1.5px;
+  }
+
+  .hero h2,
+  .hero-subtitle-title,
+  .hero-role,
+  .outline-text,
+  .stroke-text {
+    font-size: 34px;
+    letter-spacing: -1px;
+  }
+
+  .hero p,
+  .hero-description,
+  .hero-subtitle,
+  .banner-description {
     font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
+    line-height: 1.5;
   }
 
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
+  .hero-buttons,
+  .hero-actions,
+  .cta-buttons {
+    gap: 10px;
   }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+  .hero .btn,
+  .hero-button,
+  .cta-btn,
+  .hero-actions a,
+  .hero-buttons a {
+    min-height: 44px;
+    padding: 11px 18px;
+    font-size: 14px;
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+
+  .play-reel,
+  .pause-btn,
+  .video-control,
+  .reel-control {
+    right: 20px;
+    bottom: 28px;
+    width: 72px;
+    height: 72px;
   }
 }
