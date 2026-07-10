@@ -1,596 +1,452 @@
 // ============================================================
-// portfolioData.js — Centralized configuration for Mohamed Yunus's Portfolio
-// All external links, personal info, assets, projects, certificates,
-// skills, education, experience, and contact content are managed here.
-// Update this file to change content across the entire portfolio.
+// portfolioData.js — Centralized configuration for Mohamed Rafi Niyaz Deen's Portfolio
+// All content is managed here. Update this file to update the site.
 // ============================================================
 
 export const personalInfo = {
-  name: "MOHAMED YUNUS A",
-  firstName: "Mohamed Yunus",
-  brandName: "Mohamed Yunus",
-  title: "AI & Data Science Student | Full Stack Developer",
-  location: "Perambalur, Tamil Nadu",
-  phone: "+91 9360461743",
+  name: "MOHAMED RAFI NIYAZ DEEN",
+  firstName: "Mohamed Rafi",
+  brandName: "Mohamed Rafi",
+  title: "Head of Business Development | Logistics, Automation & Workforce",
+  location: "Al-Jubail, Kingdom of Saudi Arabia",
+  phone: "+966 (0) 553 951 303",
   emails: {
-    primary: "mohamedyunus.f5coders@gmail.com",
-    secondary: "mohamedyunus.f5coders@gmail.com",
+    primary: "mohamedrafi2512@gmail.com",
+    secondary: "mohamedrafi2512@gmail.com",
   },
   summary:
-    "AI & Data Science Engineering student with experience in building AI-powered and full-stack applications. Skilled in Python, Machine Learning, TensorFlow Lite, PHP, JavaScript, SQL, and cloud-based deployments. Experienced in developing ERP systems, digital twin solutions, voice-based mobile applications, and real-time analytics dashboards. Passionate about scalable, secure, and performance-driven software development.",
-  resumeUrl: "/Yunus_resume.pdf",
+    "Strategic business development and operations professional with 15+ years’ experience driving growth, transformation and large-scale projects across the GCC and Asia. Skilled in building ventures, forming partnerships and delivering scalable solutions in investment, retail, workforce, automation and industrial operations. Recognized for aligning commercial strategy with operational insight to enable market entry, optimize business models and achieve sustainable growth.",
+  resumeUrl: "/Rafi_resume.pdf", // Path to his resume
 };
 
 export const socialLinks = {
+  linkedin: "https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/", // Assuming standard Linkedin search or URL structure
   github: "#",
-  linkedin: "#",
   instagram: "#",
 };
 
 export const heroContent = {
-  greeting: "Hi, I'm Mohamed Yunus",
-  titleHighlight: "AI & Full Stack Developer",
+  greeting: "Mohamed Rafi Niyaz Deen",
+  titleHighlight: "Head of Business Development & Regional Sales",
   subtitle:
-    "I build AI-powered applications, ERP systems, full-stack websites, dashboards, automation workflows, and real-time business solutions.",
-  ctaPrimary: { text: "View My Work", href: "#projects" },
+    "Strategic commercial leader with a 15+ year record driving market entry, joint ventures, and operations across GCC industrial sectors in workforce solutions, chemical 3PL warehousing, and robotic intralogistics.",
+  ctaPrimary: { text: "Explore My Record", href: "#experience" },
   ctaSecondary: {
     text: "Contact Me",
-    href: "mailto:mohamedyunus.f5coders@gmail.com?subject=Portfolio Inquiry – Mohamed Yunus",
+    href: "mailto:mohamedrafi2512@gmail.com?subject=Business Inquiry – Mohamed Rafi",
   },
-  ctaResume: { text: "Download Resume", href: "/Yunus_resume.pdf" },
+  ctaResume: { text: "Download CV", href: "/Rafi_resume.pdf" },
 };
 
 export const aboutContent = {
-  heading: "About Me",
-  bio: `Hi, my name is <span class="text-black text-xl font-black mx-1 tracking-wide uppercase">Mohamed Yunus A</span>. I am an AI & Data Science Engineering student from Perambalur, Tamil Nadu. I have experience in building AI-powered applications, full-stack websites, ERP systems, digital twin solutions, voice-based mobile applications, and real-time analytics dashboards.`,
+  heading: "Executive Profile",
+  bio: `I am a senior <span class="text-[#E2B857] text-xl font-black mx-1 tracking-wide uppercase">Business Development & Operations Leader</span> with over 15 years of experience in the GCC and Asia. My expertise spans chemical logistics, workforce outsourcing, robotic automation, and smart warehousing systems. I specialize in market entry strategy, commercial negotiations, solution design, and fostering long-term strategic alliances that optimize operations and drive sustainable revenue growth.`,
   techStack: [
-    "Python",
-    "PHP",
-    "JavaScript",
-    "Machine Learning",
-    "TensorFlow Lite",
-    "SQL",
-    "MySQL",
-    "MongoDB",
-    "React.js",
-    "Chart.js",
-    "Firebase",
-    "AWS",
-    "Git",
-    "GitHub",
-    "VS Code",
-    "Hostinger",
-    "n8n",
-    "Make",
+    "Business Development",
+    "Market Entry Strategy",
+    "Contract Negotiation",
+    "CAPEX Planning & ROI",
+    "3PL Logistics & Warehousing",
+    "Workforce Solutions & Compliance",
+    "Automation & Robotics Integration",
+    "Tendering & Bid Operations",
+    "Key Account Management",
+    "GCC Market Compliance (Qiwa, GOSI, WPS)",
+    "Joint Ventures & Strategic Alliances",
+    "Supply Chain Optimization",
   ],
 };
 
 export const skillsContent = {
-  badge: "My Process",
-  heading: "Here's how I turn ideas into real-world digital products",
+  badge: "My Methodology",
+  heading: "How I Turn Market Opportunities Into High-Growth Operations",
   description:
-    "I follow a structured, practical, and business-focused development process to convert ideas into responsive websites, ERP dashboards, automation systems, and AI-powered solutions.",
+    "Applying a structured, compliant, and client-centric business development process to establish joint ventures, introduce automated technologies, and manage multi-million-dollar supply chains.",
   cards: [
     {
       number: "01",
-      title: "Research",
-      text: "I begin by understanding the business goal, user problem, workflow, required features, and technical constraints before planning the solution.",
+      title: "Market Assessment",
+      text: "Performing micro-level research, SWOT analyses, competitor mapping, and feasibility studies to identify viable entry points and compliance mandates in GCC industrial markets.",
     },
     {
       number: "02",
-      title: "Design",
-      text: "I create clean layouts, user-friendly interfaces, structured data flows, and simple user journeys that make the product easy to use.",
+      title: "Solution Design & Bid",
+      text: "Collaborating with technology partners and engineers to design intralogistics, bulk packaging, or workforce outsourcing models, followed by rigorous cost-per-head/ROI evaluations.",
     },
     {
       number: "03",
-      title: "Develop",
-      text: "I build responsive frontends, functional backends, database logic, dashboards, automation flows, and integrations using the right tech stack.",
+      title: "Negotiation & Alliances",
+      text: "Leading commercial discussions, tendering procedures, and legal compliance workflows to secure multi-year contracts with Tier-1 partners (SABIC, Ma'aden, Tasnee, etc.).",
     },
     {
       number: "04",
-      title: "Deploy",
-      text: "I test, optimize, fix errors, deploy the project, verify links, check responsiveness, and make the final product production-ready.",
+      title: "Operations & Handover",
+      text: "Onboarding local workforce teams, structuring payroll/Saudization programs, setting up 3PL storage operations, and ensuring SLA compliance for seamless client handoff.",
     },
   ],
-  endText: "Ready to build!",
+  endText: "Ready for next venture!",
 };
 
 export const technicalSkills = {
   categories: [
     {
-      title: "Programming Languages",
+      title: "Business Strategy & Leadership",
       skills: [
-        { name: "Python", level: 58 },
-        { name: "PHP", level: 56 },
-        { name: "JavaScript", level: 54 },
-        { name: "SQL", level: 52 },
+        { name: "Market Entry & Expansion", level: 95 },
+        { name: "Strategic Partnerships & Alliances", level: 92 },
+        { name: "Joint Venture Structuring", level: 88 },
+        { name: "SWOT & KPI Analysis", level: 90 },
       ],
     },
     {
-      title: "Frontend Technologies",
+      title: "Commercial & Financial Management",
       skills: [
-        { name: "HTML5", level: 60 },
-        { name: "CSS3", level: 56 },
-        { name: "JavaScript", level: 54 },
-        { name: "React.js", level: 48 },
-        { name: "Chart.js", level: 46 },
+        { name: "Contract Negotiation & Deal Closure", level: 94 },
+        { name: "CAPEX & OPEX Budgeting", level: 85 },
+        { name: "ROI & Techno-Commercial Analysis", level: 87 },
+        { name: "Tendering & RFP Submissions", level: 92 },
       ],
     },
     {
-      title: "Backend Technologies",
+      title: "Logistics & Supply Chain",
       skills: [
-        { name: "PHP", level: 56 },
-        { name: "Authentication Systems", level: 50 },
-        { name: "Session Management", level: 48 },
-        { name: "CRUD Operations", level: 55 },
+        { name: "3PL & Dangerous Goods Storage", level: 93 },
+        { name: "Bulk Polymer Logistics & Packaging", level: 90 },
+        { name: "Intralogistics & Port Handover", level: 89 },
+        { name: "Industrial Supply Chain Systems", level: 91 },
       ],
     },
     {
-      title: "Databases",
+      title: "Automation & Robotics Integration",
       skills: [
-        { name: "MySQL", level: 54 },
-        { name: "MongoDB", level: 48 },
-        { name: "IndexedDB", level: 44 },
-        { name: "SQL", level: 52 },
+        { name: "Robotic Arm Integration Projects", level: 82 },
+        { name: "Stretch Hood Packaging Automation", level: 85 },
+        { name: "Smart Inventory & Warehousing Systems", level: 88 },
+        { name: "Feasibility Studies for Full Automation", level: 86 },
       ],
     },
     {
-      title: "AI / ML Tools",
+      title: "Workforce & HR Solutions",
       skills: [
-        { name: "TensorFlow Lite", level: 46 },
-        { name: "NumPy", level: 48 },
-        { name: "Pandas", level: 48 },
-        { name: "Machine Learning Algorithms", level: 45 },
-      ],
-    },
-    {
-      title: "Cloud & Dev Tools",
-      skills: [
-        { name: "AWS", level: 42 },
-        { name: "Firebase", level: 45 },
-        { name: "Git", level: 50 },
-        { name: "GitHub", level: 52 },
-        { name: "VS Code", level: 60 },
-        { name: "Hostinger", level: 56 },
-        { name: "n8n", level: 48 },
-        { name: "Make", level: 46 },
+        { name: "Manpower Outsourcing (10,000+ staff)", level: 95 },
+        { name: "Saudization (Nitaqat) Compliance", level: 94 },
+        { name: "Saudi Labor Systems (Qiwa, GOSI, WPS)", level: 96 },
+        { name: "Global Bulk Recruitment Campaigns", level: 92 },
       ],
     },
   ],
 };
 
 export const contentCreation = {
-  badge: "Engagement",
-  heading: "Extracurricular Activities & Initiatives",
+  badge: "Global Network",
+  heading: "Industrial Forums & Regional Alliances",
   description:
-    "Beyond core coding, I actively engage in leading coding groups, community volunteering, career mentoring, and social initiatives.",
+    "Active participant and representative at top-tier petrochemical, logistics, and business forums across the Middle East.",
   categories: [
     {
-      title: "Co-Founder – F5 Coders",
+      title: "GPCA Annual Forums",
       description:
-        "Conducted workshops, coding bootcamps, and technical training sessions for engineering and school-level students. Built learning roadmaps for Python, AI/ML, and practical problem solving.",
-      stats: "F5 Coders",
-      icon: "💻",
+        "Participated in multiple Gulf Petrochemicals and Chemicals Association events to monitor supply chain trends, build international networking pipelines, and shape joint venture deals.",
+      stats: "International",
+      icon: "🌐",
     },
     {
-      title: "Career Guidance Mentor",
+      title: "Saudi Maritime & Logistics Congress",
       description:
-        "Provided career counselling, engineering course guidance, and skill-building pathways to help 12th standard students choose the right academic direction after schooling.",
-      stats: "Mentorship",
-      icon: "🎓",
+        "Engaged with port authorities, container carriers, and EPC contractors to outline port handover workflows and scalable bulk export logistics policies.",
+      stats: "National",
+      icon: "⚓",
     },
     {
-      title: "Maatram Foundation Volunteer",
+      title: "Aramco & SABIC LTC Forums",
       description:
-        "Participated in and assisted with social events and development initiatives organized by Maatram Foundation.",
-      stats: "Community",
-      icon: "🌟",
+        "Aligned with local content directives, sharing insights on automation, Saudization structuring, and supplier onboarding regulations.",
+      stats: "Corporate",
+      icon: "🏗️",
     },
     {
-      title: "Bhumi’s Daan Utsav Participant",
+      title: "Global Supply Chain Summits",
       description:
-        "Contributed to community welfare programs, awareness campaigns, and social development drives.",
-      stats: "Volunteering",
-      icon: "🤝",
+        "Represented logistics subsidiaries at IPTC, MEPEC, and Global Logistics Forums, showcasing localized brand capabilities and market integrations.",
+      stats: "Pan-GCC",
+      icon: "📈",
     },
   ],
 };
 
 export const leadershipList = [
   {
-    title: "Secretary – AI & DS",
+    title: "Silos Construction EPC Project",
     description:
-      "Coordinated departmental events, maintained activity reports, and ensured smooth execution of academic and technical activities.",
-    role: "Department Secretary",
-    badge: "Leadership",
+      "Led the business development and project facilitation for TASNEE silos (Carbon Black products) valued at USD 12 Million, securing full commercial alignment.",
+    role: "Commercial Manager | Schmidt ME",
+    badge: "USD 12M Win",
   },
   {
-    title: "ERP Systems Architecture",
+    title: "Overdue Collections Recovery Unit",
     description:
-      "Designed, developed, and deployed end-to-end ERP systems including billing, inventory, purchase orders, and analytics dashboards.",
-    role: "Lead Developer",
-    badge: "Responsibility",
+      "Launched a dedicated payment recovery unit at Jaddarah Workforce Services, successfully recovering SR 272 Million in overdue payments from clients.",
+    role: "BD & Operations Manager",
+    badge: "SR 272M Recovered",
   },
   {
-    title: "Client-Focused Web Development",
+    title: "3PL Dangerous Goods Storage Contracts",
     description:
-      "Created and maintained production-grade websites for businesses, ensuring responsive UI and optimized backend performance.",
-    role: "Full Stack Developer",
-    badge: "Responsibility",
+      "Secured and managed long-term 3PL storage contracts for Aquaness LLC & Nex Chemia, handling 10,000 Metric Tons (MT) per year under unlimited contract terms.",
+    role: "Head of BD | TechPulse Global",
+    badge: "10,000 MT/Yr DG Storage",
   },
   {
-    title: "Academic Excellence",
+    title: "Bulk Polymer Export Logistics Contract",
     description:
-      "Secured 3rd Rank Academic Topper in the B.Tech Artificial Intelligence & Data Science program.",
-    role: "Anna University Academic Topper",
-    badge: "Achievement",
+      "Secured and operationalized a high-volume polymer export logistics contract for containerized shipments from Jubail to Genoa, Italy, establishing an export flow of 100-200 containers monthly.",
+    role: "Commercial Manager | Schmidt ME",
+    badge: "100-200 Containers/Mo",
   },
   {
-    title: "Technical Mentorship",
+    title: "Urgent Mass Recruitment Campaigns",
     description:
-      "Trained 99+ students in Python, AI/ML fundamentals, and problem-solving as a technical mentor.",
-    role: "Technical Mentor",
-    badge: "Achievement",
+      "Planned and executed urgent bulk recruitment campaigns across India (Chennai, Trichy, Mumbai) & Nepal, mobilizing over 450 candidates during the COVID-19 pandemic.",
+    role: "BD & Operations Manager | Jaddarah",
+    badge: "COVID-19 Mobilization",
   },
   {
-    title: "Production ERP Deployment",
+    title: "Saudi Market Entry Advisory",
     description:
-      "Developed production-level ERP and billing systems used across multiple retail businesses.",
-    role: "ERP Developer",
-    badge: "Achievement",
-  },
-  {
-    title: "Live Corporate Sites Deployment",
-    description:
-      "Built and deployed full-stack corporate websites including ecolinellc.com and techpulsegc.com for real clients.",
-    role: "Full Stack Developer",
-    badge: "Achievement",
+      "Guided foreign entities like E80 Group (Italy), Handled (USA), and ADK Blasts Corp (South Korea) through Saudi market entry, compliance, GOSI, Qiwa, and local payroll onboarding.",
+    role: "Head of BD | TechPulse Global",
+    badge: "Market Entry Advisory",
   },
 ];
 
 export const internshipsList = [
   {
-    organization: "Ecoline LLC",
-    role: "Software & ERP Development Intern",
-    duration: "Jun – Jul 2025",
+    organization: "Workforce Saudia",
+    role: "Regional Sales Manager",
+    duration: "Oct 2025 – Present",
     description:
-      "Contributed to the development of the Invoice–PO–Inventory ERP system. Improved UI performance by 40% and reduced page load time by 30% through optimized frontend and backend logic.",
+      "Directing regional sales operations and corporate client partnerships for KSA's leading HR manpower outsourcing provider. Driving high-value corporate staffing contracts and ensuring full Saudization (Nitaqat), Qiwa, and GOSI legal compliance for industrial enterprise accounts.",
     skills: [
-      "Invoice ERP",
-      "Purchase Order",
-      "Inventory ERP",
-      "Frontend Optimization",
-      "Backend Logic",
+      "Regional Sales Strategy",
+      "Manpower Outsourcing",
+      "Key Account Management",
+      "Saudi Labor Compliance",
     ],
-    tech: ["PHP", "JavaScript", "MySQL", "ERP System"],
+    tech: ["Saudi Arabia", "Riyadh", "HR Services"],
   },
   {
-    organization: "Plasmid",
-    role: "AI & Data Science Intern",
-    duration: "May – Jun 2024",
+    organization: "TechPulse Global Saudi Arabia",
+    role: "Head of Business Development",
+    duration: "Jul 2025 – Present",
     description:
-      "Gained hands-on experience with Python, Pandas, NumPy, and basic ML algorithms. Learned real-time problem solving and applied AI/ML concepts to practical datasets.",
+      "Pioneering smart warehousing, robotic automation, and chemical 3PL logistics solutions. Bridging multinational technology providers with local end users to deploy advanced robotic packaging systems and secure Aramco-approved industrial contracts.",
     skills: [
-      "Python",
-      "Pandas",
-      "NumPy",
-      "Basic ML Algorithms",
-      "AI/ML Concepts",
+      "Workforce & Automation",
+      "Smart Warehousing",
+      "Chemical 3PL Storage",
+      "Client Management",
     ],
-    tech: ["Python", "Pandas", "NumPy", "Machine Learning"],
+    tech: ["Saudi Arabia", "Jubail", "GCC Markets"],
   },
   {
-    organization: "Novitech",
-    role: "AI / ML Intern",
-    duration: "Jan – Feb 2024",
+    organization: "WR Logistics LLC",
+    role: "Head of Business Development – Market Entry",
+    duration: "Mar 2025 – May 2025",
     description:
-      "Worked on machine learning model development, preprocessing, and evaluation.",
+      "Facilitated market entry assessment and feasibility study for the Saudi industrial logistics sector. Engaged with tier-1 petrochemical clients (SABIC, Tasnee, ASMO) to capture logistics demand and conceptualize material handling solutions.",
     skills: [
-      "Machine Learning",
-      "Model Development",
-      "Preprocessing",
-      "Evaluation",
+      "Market Feasibility Studies",
+      "Client Discovery",
+      "Automation Assessment",
+      "GCC Forums Representation",
     ],
-    tech: ["Python", "Machine Learning"],
+    tech: ["Riyadh", "Project Engagement", "GPCA / IPTC"],
+  },
+  {
+    organization: "Schmidt ME Logistics Saudi Arabia",
+    role: "Commercial Manager",
+    duration: "2022 – Feb 2025",
+    description:
+      "Managed commercial operations and BD for Karl Schmidt Middle East. Secured long-term polymer logistics contracts, optimized ocean/land supply chains (including 100-200 container/month polymer export to Genoa, Italy), and led commercial alignment for the USD 12M TASNEE Silos project.",
+    skills: [
+      "Tendering & Proposal Bid",
+      "Costing & Commercial Bids",
+      "Supplier Management",
+      "EPC Project Facilitation",
+    ],
+    tech: ["Jubail", "Karl Schmidt Subsidiary", "Genoa Export Flow"],
+  },
+  {
+    organization: "Jaddarah Workforce Services Company",
+    role: "Business Development and Operations Manager",
+    duration: "2014 – 2022",
+    description:
+      "Led a team of 25 branch coordinators managing accounts for 10,000+ outsourced personnel. Drove SAR 25 Million monthly revenue, achieved a 90% proposal success rate, and successfully recovered SR 272 Million in overdue payments.",
+    skills: [
+      "Manpower Outsourcing",
+      "GRC & GOSI Compliance",
+      "SWOT & KPI Tracking",
+      "Bulk Sourcing Operations",
+    ],
+    tech: ["Jubail", "Saudi-wide Operations", "Qiwa & Absher"],
+  },
+  {
+    organization: "Plus Max Groups of Companies Sdn Bhd",
+    role: "Executive – Business Development & Operations",
+    duration: "2012 – 2014",
+    description:
+      "Led retail logistics business growth initiatives in Malaysia, increasing market penetration by 25% and launching loyalty models that boosted repeat customer visits by 40%.",
+    skills: [
+      "Retail Logistics Growth",
+      "Loyalty Program Development",
+      "Vendor Management",
+      "Product Launches",
+    ],
+    tech: ["Kuala Lumpur", "Malaysia", "Retail Sector"],
+  },
+  {
+    organization: "Coastline Groups of Companies",
+    role: "HR Executive",
+    duration: "2011 – 2012",
+    description:
+      "Managed end-to-end recruitment operations from sourcing to onboarding. Designed hiring campaigns to attract international expatriate talent and aligned HR initiatives with department heads.",
+    skills: [
+      "Talent Acquisition",
+      "Expatriate Sourcing",
+      "Hiring Campaigns",
+      "Onboarding Workflows",
+    ],
+    tech: ["Male'", "Republic of Maldives", "Expat Talent"],
   },
 ];
 
 export const softSkillsList = [
   {
-    name: "Teamwork",
-    icon: "🤝",
-    desc: "Collaborating effectively with cross-functional teams to build and deliver successful projects.",
-  },
-  {
-    name: "Communication",
-    icon: "💬",
-    desc: "Expressing ideas clearly and establishing strong communication lines with peers and clients.",
-  },
-  {
-    name: "Research Writing",
-    icon: "📝",
-    desc: "Documenting findings, compiling analysis, and producing structured technical research reports.",
-  },
-  {
-    name: "Leadership",
+    name: "Strategic Leadership",
     icon: "👑",
-    desc: "Coordinating departmental activities, mentoring peers, and leading project execution.",
+    desc: "Directing multi-branch teams, structuring key operations, and guiding corporate joint-ventures.",
   },
   {
-    name: "Time Management",
-    icon: "⏰",
-    desc: "Balancing academic requirements, mentoring responsibilities, and client project timelines.",
+    name: "Commercial Negotiation",
+    icon: "🤝",
+    desc: "Closing high-value industrial contracts and drafting cost-effective cost-plus manpower models.",
+  },
+  {
+    name: "Regulatory GRC Compliance",
+    icon: "🛡️",
+    desc: "Expertise in Saudi labor compliance, Qiwa, GOSI, WPS, Muqeem, Absher, and Saudization quotas.",
+  },
+  {
+    name: "Stakeholder Relations",
+    icon: "💬",
+    desc: "Bridging communication between industrial clients, EPC contractors, and global technology providers.",
   },
 ];
 
 export const projects = [
   {
-    id: "edge-ai-digital-twin",
+    id: "techpulse-dg-storage",
     number: "01",
-    badge: "🤖 AI Healthcare",
-    title: "Decentralized Edge AI Digital Twin for Diabetes Management",
+    badge: "📦 3PL dangerous goods",
+    title: "10,000 MT/Year DG Storage Contract",
     description:
-      "Built an offline-capable AI system using TensorFlow Lite for glucose trend prediction and metabolic simulation. Designed real-time dashboards, sensor analytics, and a privacy-first health monitoring interface.",
-    techTags: ["TensorFlow Lite", "Python", "AI/ML", "Dashboard", "Edge AI"],
+      "Negotiated and operationalized a long-term Dangerous Goods (DG) 3PL contract for chemical logistics leaders Aquaness LLC and Nex Chemia, establishing permanent regional storage capacity.",
+    techTags: ["Dangerous Goods", "3PL Storage", "Chemical Logistics", "Jubail"],
     links: {
-      github: "#",
+      linkedin: "https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/",
       demo: null,
     },
     isFlagship: true,
   },
   {
-    id: "ecolinellc-website",
+    id: "tasnee-silos-epc",
     number: "02",
-    badge: "🏢 Corporate Website",
-    title: "ecolinellc.com",
+    badge: "🏗️ Industrial EPC",
+    title: "TASNEE Silos Carbon Black Project",
     description:
-      "Designed and deployed a complete business website with responsive UI, service sections, dashboards, contact automation, and optimized performance.",
-    techTags: ["Full Stack", "HTML5", "CSS3", "JavaScript", "PHP"],
+      "Led the techno-commercial bid valuation, client alignment, and supplier bidding process for the TASNEE Silos project, securing a USD 12 Million commercial victory for Schmidt ME.",
+    techTags: ["EPC Bids", "Silos Construction", "Carbon Black", "USD 12M"],
     links: {
-      github: "#",
-      demo: "https://ecolinellc.com",
+      linkedin: "https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/",
+      demo: null,
     },
     isFlagship: true,
   },
   {
-    id: "techpulsegc-website",
+    id: "polymer-export-genoa",
     number: "03",
-    badge: "🏢 Corporate Website",
-    title: "techpulsegc.com",
+    badge: "🚢 Global Export Flow",
+    title: "Jubail to Genoa Polymer Supply Chain",
     description:
-      "Created a modern corporate website with analytics sections, service modules, SEO optimization, responsive UI/UX, and a clean professional layout.",
-    techTags: ["Full Stack", "SEO", "Responsive UI", "JavaScript"],
+      "Designed and operationalized a large-scale polymer export supply chain contract, organizing logistics, port handover, and local storage to ship 100-200 containerized loads monthly to Genoa, Italy.",
+    techTags: ["Export Logistics", "Container Flow", "Port Handover", "Genoa"],
     links: {
-      github: "#",
-      demo: "https://techpulsegc.com",
+      linkedin: "https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/",
+      demo: null,
     },
     isFlagship: true,
-  },
-  {
-    id: "ecoline-invoice-erp",
-    number: "04",
-    badge: "🚀 ERP System",
-    title: "ERP Invoice Management for Ecoline LLC",
-    description:
-      "Developed an ERP system for invoice management, purchase orders, inventory, billing, and analytics dashboards for Ecoline LLC.",
-    techTags: ["PHP", "MySQL", "JavaScript", "ERP", "Invoice Management"],
-    links: {
-      github: "#",
-      demo: null,
-    },
-    isFlagship: false,
-  },
-  {
-    id: "rainbow-prints-website",
-    number: "05",
-    badge: "🌐 Business Website",
-    title: "rainbowprintstry.com",
-    description:
-      "Developed a business website for Rainbow Prints with responsive pages and service-focused layout.",
-    techTags: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
-    links: {
-      github: "#",
-      demo: "https://rainbowprintstry.com",
-    },
-    isFlagship: false,
-  },
-  {
-    id: "rainbow-xerox-website",
-    number: "06",
-    badge: "🌐 Business Website",
-    title: "rainbowxeroxpblr.com",
-    description:
-      "Developed a business website for Rainbow Xerox Perambalur with responsive UI and service information sections.",
-    techTags: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
-    links: {
-      github: "#",
-      demo: "https://rainbowxeroxpblr.com",
-    },
-    isFlagship: false,
-  },
-  {
-    id: "salaamath-school-website",
-    number: "07",
-    badge: "🏫 School Website",
-    title: "salaamathschool.com",
-    description:
-      "Developed a school website with responsive design, academic information sections, contact details, and clean UI.",
-    techTags: ["HTML5", "CSS3", "JavaScript", "Responsive UI"],
-    links: {
-      github: "#",
-      demo: "https://salaamathschool.com",
-    },
-    isFlagship: false,
-  },
-  {
-    id: "srikala-catering-website",
-    number: "08",
-    badge: "⚛️ React Website",
-    title: "srikalacattering.com",
-    description:
-      "Developed a React.js website for Sri Kala Catering with responsive design and service-based sections.",
-    techTags: ["React.js", "JavaScript", "CSS3", "Responsive Design"],
-    links: {
-      github: "#",
-      demo: "https://srikalacattering.com",
-    },
-    isFlagship: false,
-  },
-  {
-    id: "whatsapp-automation-workflows",
-    number: "09",
-    badge: "⚡ Automation",
-    title: "WhatsApp Automation Workflows",
-    description:
-      "Worked on WhatsApp automation workflows using n8n and Make for business communication, follow-ups, and workflow automation.",
-    techTags: ["WhatsApp Automation", "n8n", "Make", "Automation"],
-    links: {
-      github: "#",
-      demo: null,
-    },
-    isFlagship: false,
-  },
-  {
-    id: "mern-crud-app",
-    number: "10",
-    badge: "💻 MERN CRUD",
-    title: "CRUD Application in MERN",
-    description:
-      "Built CRUD operations using the MERN stack with MongoDB, Express, React, and Node.js.",
-    techTags: ["MongoDB", "Express", "React.js", "Node.js", "CRUD"],
-    links: {
-      github: "#",
-      demo: null,
-    },
-    isFlagship: false,
-  },
-  {
-    id: "php-sql-crud-app",
-    number: "11",
-    badge: "🐘 PHP SQL CRUD",
-    title: "CRUD System using SQL and PHP",
-    description:
-      "Built CRUD systems using PHP and SQL for managing data, forms, records, and database operations.",
-    techTags: ["PHP", "SQL", "MySQL", "CRUD"],
-    links: {
-      github: "#",
-      demo: null,
-    },
-    isFlagship: false,
-  },
-  {
-    id: "voice-based-android-app",
-    number: "12",
-    badge: "📱 AI Mobile App",
-    title: "Voice-Based Android Application",
-    description:
-      "Developed an Android app enabling voice-controlled interactions for task execution with speech-to-text, command recognition, and smart assistant functions.",
-    techTags: ["AI", "Mobile App", "Speech-to-Text", "Command Recognition"],
-    links: {
-      github: "#",
-      demo: null,
-    },
-    isFlagship: false,
   },
 ];
 
 export const certificates = {
   featured: [
     {
-      name: "Value-Added Course on AI Tools, AI-Integrated SDLC & Cloud Practices",
-      issuer: "VDart Academy",
-      icon: "🤖",
-      issuedDate: "Feb 2026",
-      credentialId: "812023243031",
-      skills: ["AI Tools", "SDLC", "Cloud"],
-      description:
-        "Completed a 40-hour value-added course focused on AI tools, industry-oriented SDLC, and cloud practices, gaining hands-on experience in modern software development.",
+      name: "Appreciation Award — Best Supplier",
+      issuer: "S.A. TALKE",
+      icon: "🏆",
+      issuedDate: "2019",
+      description: "Awarded by S.A. TALKE for outstanding logistics support and consistent SLA delivery across industrial projects.",
     },
     {
-      name: "Tata - Data Visualisation: Empowering Business with Effective Insights Job Simulation",
-      issuer: "Tata Group",
-      icon: "📊",
-      issuedDate: "Apr 2026",
-      credentialId: "m4ccbbArDQKZ96oMf",
-      skills: ["Data Visualisation", "Business Insights", "Choosing Right Visuals"],
-      description:
-        "Completed a data visualisation job simulation focused on framing business scenarios and choosing the right visuals for effective business insights.",
+      name: "Appreciation Award — Best Employee",
+      issuer: "Jaddarah Workforce Services Company",
+      icon: "🎖️",
+      issuedDate: "2019",
+      description: "Awarded for exceptional leadership, recovering overdue accounts, and expanding client onboarding by 20%.",
     },
     {
-      name: "AWS ML Engineer Associate",
-      issuer: "Amazon Web Services AWS",
-      icon: "☁️",
-      issuedDate: "Mar 2026",
-      skills: ["Machine Learning", "AWS", "Cloud", "AI"],
-      description: "Completed the AWS ML Engineer Associate certificate program.",
+      name: "Saudi Maritime & Logistics Summit",
+      issuer: "Dammam Forum",
+      icon: "⚓",
+      description: "Certified participant in discussions detailing port digitalization, cargo compliance, and next-generation GCC export lanes.",
     },
     {
-      name: "Data Analytics Job Simulation",
-      issuer: "Deloitte",
-      icon: "💼",
-      issuedDate: "Mar 2026",
-      credentialId: "M7sRkrcRwsnX5i9kA",
-      skills: [
-        "Data Analysis",
-        "Data Cleaning",
-        "Microsoft Excel",
-        "Problem Solving",
-        "Data Visualization",
-      ],
-      description:
-        "Completed a data analytics job simulation involving real-world data tasks, data cleaning, analysis, and useful business insights.",
-    },
-    {
-      name: "Certificate of Merit – Systems for Large Language Models LLMs",
-      issuer: "PALS - IIT Alumni Initiative",
-      icon: "🧠",
-      issuedDate: "Feb 2026",
-      credentialId: "PALS_IAL_S2_IBM_MERIT_00238",
-      skills: ["Large Language Models", "AI", "LLMs"],
-      description:
-        "Awarded by PALS for participation and meritorious performance in the Industry-Assisted Online Lecture Series on Systems for Large Language Models.",
-    },
-    {
-      name: "AI/ML Developer",
-      issuer: "Novitech",
-      icon: "🤖",
-      description: "AI/ML Developer certification.",
-    },
-    {
-      name: "Java Programming",
-      issuer: "Naan Mudhalvan",
-      icon: "☕",
-      description: "Java Programming certification.",
-    },
-    {
-      name: "Full Stack Development",
-      issuer: "GUVI",
-      icon: "💻",
-      description: "Full Stack Development certification.",
+      name: "GPCA Annual Supply Chain Forums",
+      issuer: "Gulf Petrochemical Association",
+      icon: "🌐",
+      description: "Regular delegate mapping supply chain integrations, chemical 3PL expansions, and workforce Saudization dynamics.",
     },
   ],
-  viewAllUrl: "#",
+  viewAllUrl: "https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/",
 };
 
 export const education = {
-  degree: "B.Tech – Artificial Intelligence and Data Science",
-  institution: "M.A.M College of Engineering and Technology",
-  university: "Anna University",
-  cgpa: "8.11/10",
-  graduation: "2023 – 2027",
-  school: "Government Model School Perambalur",
-  twelfth: "Class XII: 85.6% (2022 – 2023)",
+  degree: "Bachelors of Science (B.Sc)",
+  institution: "Bharathidasan University",
+  university: "Tiruchirappalli, Tamil Nadu, India",
+  graduation: "Graduated: 2009",
+  school: "",
+  twelfth: "",
   tenth: "",
+};
+
+export const personalDetails = {
+  nationality: "Indian",
+  dob: "28/06/1988",
+  maritalStatus: "Married",
+  dependents: "04",
+  passportNo: "T9285897 (Valid until 22/08/2030)",
+  permanentAddress: "Tiruchirappalli, Tamil Nadu, India",
 };
 
 export const footerContent = {
   taglines: [
-    "AI & Data Science",
-    "Full Stack Development",
-    "ERP Systems & Automation",
+    "Industrial Business Development",
+    "Dangerous Goods 3PL Storage",
+    "Manpower Outsourcing & GRC Compliance",
   ],
-  credential: "B.Tech AI & Data Science · CGPA 8.11/10",
-  copyright: `© ${new Date().getFullYear()} Mohamed Yunus | Built with React`,
+  credential: "B.Sc · 15+ Years Business Development Executive",
+  copyright: `© ${new Date().getFullYear()} Mohamed Rafi Niyaz Deen | Built with React & Tailwind`,
 };
 
 export const emailjsConfig = {

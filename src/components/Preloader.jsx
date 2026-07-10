@@ -2,7 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { personalInfo } from '../data/portfolioData';
 
-const LOAD_DURATION = 2200; // ms — matches the water-fill + shutter timing below
+const LOAD_DURATION = 2400; // ms
+
+const getBusinessSectorText = (prog) => {
+  if (prog < 35) return "Connecting 3PL & Chemical Logistics Networks";
+  if (prog >= 35 && prog < 70) return "Mobilizing Enterprise Manpower Solutions";
+  return "Integrating Intelligent Robotic Automation Systems";
+};
 
 const Preloader = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -42,17 +48,17 @@ const Preloader = () => {
           key="preloader"
           initial={{ y: 0 }}
           exit={{ y: '-100%' }}
-          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 w-full h-screen z-[100000] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#4338ca] via-[#6d5bf5] to-[#22b8cf]"
+          transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 w-full h-screen z-[100000] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#080c14] via-[#0b0f19] to-[#121824]"
         >
-          {/* Ambient drifting glow orbs — same language as the rest of the site */}
-          <div className="absolute -top-1/3 -left-1/4 w-[60%] h-[60%] pointer-events-none rounded-full blur-[130px] opacity-25 bg-[#22d3ee] preloader-orb" />
+          {/* Ambient drifting glow orbs */}
+          <div className="absolute -top-1/3 -left-1/4 w-[60%] h-[60%] pointer-events-none rounded-full blur-[130px] opacity-15 bg-gold-primary preloader-orb" />
           <div
-            className="absolute -bottom-1/3 -right-1/4 w-[55%] h-[55%] pointer-events-none rounded-full blur-[130px] opacity-20 bg-[#8b6cf7] preloader-orb"
+            className="absolute -bottom-1/3 -right-1/4 w-[55%] h-[55%] pointer-events-none rounded-full blur-[130px] opacity-10 bg-amber-600 preloader-orb"
             style={{ animationDelay: '-6s', animationDirection: 'reverse' }}
           />
 
-          {/* Slowly rotating conic ring behind the logo for a subtle "engine warming up" feel */}
+          {/* Slowly rotating conic ring behind the logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 0.35, scale: 1 }}
@@ -68,7 +74,7 @@ const Preloader = () => {
             className="relative text-5xl md:text-7xl font-black tracking-tighter"
           >
             {/* Background text */}
-            <div className="text-white/15 flex select-none">
+            <div className="text-white/10 flex select-none">
               {personalInfo.brandName.split("").map((char, index) => (
                 <span key={index}>{char}</span>
               ))}
@@ -86,7 +92,7 @@ const Preloader = () => {
                     type: 'spring',
                     stiffness: 220,
                     damping: 12,
-                    delay: index * 0.05 + 0.2
+                    delay: index * 0.04 + 0.2
                   }}
                 >
                   {char}
@@ -95,37 +101,42 @@ const Preloader = () => {
               <motion.span
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                transition={{ type: 'spring', stiffness: 300, delay: personalInfo.brandName.length * 0.05 + 0.3 }}
-                className="text-[#22d3ee]"
+                transition={{ type: 'spring', stiffness: 300, delay: personalInfo.brandName.length * 0.04 + 0.3 }}
+                className="text-gold-primary"
               >
                 .
               </motion.span>
             </div>
           </motion.div>
 
-          {/* Role / tagline — dynamically displays personalInfo.title */}
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.5, ease: 'easeOut', delay: personalInfo.brandName.length * 0.05 + 0.5 }}
-            className="mt-4 text-white/70 text-xs md:text-sm font-bold tracking-[0.35em] uppercase text-center px-4"
-          >
-            {personalInfo.title}
-          </motion.p>
+          {/* Dynamic Business Sector taglines that cycle based on load percentage */}
+          <div className="h-10 mt-6 flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={getBusinessSectorText(progress)}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.22, ease: 'easeOut' }}
+                className="text-gold-primary text-xs md:text-sm font-black tracking-[0.2em] uppercase text-center px-6 max-w-lg select-none"
+              >
+                {getBusinessSectorText(progress)}
+              </motion.p>
+            </AnimatePresence>
+          </div>
 
           {/* Progress bar synced to the actual load timer */}
           <motion.div 
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
-            className="mt-8 w-40 md:w-56 h-[3px] rounded-full bg-white/15 overflow-hidden origin-center"
+            className="mt-6 w-40 md:w-56 h-[3px] rounded-full bg-white/10 overflow-hidden origin-center"
           >
             <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-[#8b6cf7] to-[#22d3ee]"
+              className="h-full rounded-full bg-gradient-to-r from-amber-600 via-gold-primary to-yellow-400"
               initial={{ width: '0%' }}
               animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.15, ease: 'linear' }}
+              transition={{ duration: 0.1, ease: 'linear' }}
             />
           </motion.div>
 
@@ -135,7 +146,7 @@ const Preloader = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="mt-3 text-white/50 text-[11px] font-bold tracking-widest tabular-nums"
+            className="mt-3 text-slate-450 text-[11px] font-bold tracking-widest font-mono select-none"
           >
             {progress}%
           </motion.span>
@@ -151,9 +162,9 @@ const Preloader = () => {
               background: conic-gradient(
                 from 0deg,
                 transparent 0deg,
-                rgba(139, 108, 247, 0.55) 90deg,
+                rgba(226, 184, 87, 0.45) 90deg,
                 transparent 180deg,
-                rgba(34, 211, 238, 0.55) 270deg,
+                rgba(197, 168, 92, 0.45) 270deg,
                 transparent 360deg
               );
               mask: radial-gradient(closest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));

@@ -1,6 +1,14 @@
 @import "tailwindcss";
 
 @theme {
+  --color-gold-light: #f5ebd1;
+  --color-gold-primary: #e2b857;
+  --color-gold-dark: #c5a85c;
+  --color-gold-accent: #d4af37;
+  --color-slate-dark: #080c14;
+  --color-slate-primary: #0b0f19;
+  --color-slate-light: #1e293b;
+
   --animate-float: float 6s ease-in-out infinite;
 
   @keyframes float {
@@ -16,8 +24,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: #000;
-  color: #fff;
+  background-color: #080c14;
+  color: #f8fafc;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -35,4 +43,34 @@ body {
   80% { transform: translateY(0); opacity: 1; }
   90% { transform: translateY(-15px); opacity: 1; }
   100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Custom scrollbar matching gold theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080c14;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5a85c;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e2b857;
+}
+
+/* Hardware-accelerated transitions for smooth mobile experience */
+.mobile-optimized {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #ffffff 10%, #f5ebd1 50%, #e2b857 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

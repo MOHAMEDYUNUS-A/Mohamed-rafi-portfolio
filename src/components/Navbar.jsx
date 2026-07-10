@@ -2,27 +2,27 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 import { personalInfo } from '../data/portfolioData';
 
-// Hoisted outside the component — these never depend on props/state,
-// so there's no reason to recreate them on every render.
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Gallery', href: '#gallery' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];
 
-const HIRE_ME_MAILTO = (email) =>
-  `mailto:${email}?subject=Hiring Inquiry – Portfolio&body=Hello Mohamed Yunus,%0D%0A%0D%0AI came across your portfolio and would like to discuss an opportunity with you.%0D%0A%0D%0ALooking forward to hearing from you.%0D%0ABest Regards,`;
+const CONTACT_MAILTO = (email) =>
+  `mailto:${email}?subject=Business Connection – Portfolio&body=Hello Mr. Mohamed Rafi,%0D%0A%0D%0AI came across your executive portfolio and would like to connect to discuss potential synergy and opportunities.%0D%0A%0D%0ALooking forward to hearing from you.%0D%0ABest Regards,`;
 
 const MOBILE_MENU_VARIANTS = {
   hidden: { opacity: 0, height: 0 },
   visible: {
     opacity: 1,
     height: 'auto',
-    transition: { duration: 0.35, ease: 'easeInOut', staggerChildren: 0.06, delayChildren: 0.05 },
+    transition: { duration: 0.3, ease: 'easeOut', staggerChildren: 0.05, delayChildren: 0.05 },
   },
-  exit: { opacity: 0, height: 0, transition: { duration: 0.25, ease: 'easeInOut' } },
+  exit: { opacity: 0, height: 0, transition: { duration: 0.2, ease: 'easeIn' } },
 };
 
 const MOBILE_LINK_VARIANTS = {
@@ -36,13 +36,12 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const tickingRef = useRef(false);
 
-  // Throttled via rAF so the scroll handler never runs more than once per frame.
   useEffect(() => {
     const handleScroll = () => {
       if (tickingRef.current) return;
       tickingRef.current = true;
       requestAnimationFrame(() => {
-        setIsScrolled(window.scrollY > 50);
+        setIsScrolled(window.scrollY > 40);
         tickingRef.current = false;
       });
     };
@@ -50,8 +49,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll-spy: highlight whichever section is currently in view instead of
-  // a second scroll listener doing manual offset math.
   useEffect(() => {
     const sections = NAV_LINKS.map(({ href }) => document.querySelector(href)).filter(Boolean);
     if (sections.length === 0) return;
@@ -64,7 +61,7 @@ const Navbar = () => {
           }
         });
       },
-      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -74,38 +71,40 @@ const Navbar = () => {
   const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), []);
   const closeMenu = useCallback(() => setIsOpen(false), []);
 
-  const navClasses = useMemo(() => {
-    if (isOpen) return 'bg-[#0d0b1f]/95 backdrop-blur-xl py-4';
-    if (isScrolled) return 'bg-[#0d0b1f]/60 backdrop-blur-xl py-4 shadow-[0_8px_30px_rgba(13,11,31,0.35)]';
-    return 'bg-transparent py-6';
-  }, [isOpen, isScrolled]);
-
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navClasses}`}>
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-        {/* Left Side: Logo/Name */}
-        <a href="#home" className="text-white text-2xl font-black tracking-tight whitespace-nowrap group">
-          {personalInfo.brandName}
-          <span className="bg-gradient-to-r from-[#8b6cf7] to-[#22d3ee] bg-clip-text text-transparent group-hover:animate-pulse">
-            .
+    <nav className="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-4 sm:px-6">
+      {/* Floating Capsule Nav Container */}
+      <div 
+        className={`max-w-5xl mx-auto px-6 md:px-8 py-3 rounded-full flex justify-between items-center transition-all duration-500 border ${
+          isScrolled 
+            ? 'bg-slate-950/80 backdrop-blur-xl border-gold-primary/20 shadow-[0_12px_40px_rgba(0,0,0,0.7)] scale-[0.98]' 
+            : 'bg-[#080c14]/40 backdrop-blur-md border-gold-primary/10'
+        }`}
+      >
+        {/* Left Logo Name */}
+        <a href="#home" className="text-white text-lg sm:text-xl font-black tracking-tight whitespace-nowrap group text-left">
+          <span>Mohamed</span>
+          <span className="bg-gradient-to-r from-amber-500 to-gold-primary bg-clip-text text-transparent group-hover:brightness-110 ml-1">
+            Rafi
           </span>
+          <span className="text-gold-primary">.</span>
         </a>
 
-        {/* Center: Desktop Menu Links */}
-        <div className="hidden md:flex space-x-8">
+        {/* Center Nav Links */}
+        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {NAV_LINKS.map(({ label, href }) => {
             const isActive = activeSection === href.slice(1);
             return (
               <a
                 key={label}
                 href={href}
-                className={`relative group font-medium transition-colors duration-300 ${
-                  isActive ? 'text-white' : 'text-white/70 hover:text-white'
+                className={`relative group font-bold tracking-wide text-xs uppercase transition-colors duration-300 ${
+                  isActive ? 'text-gold-primary' : 'text-slate-350 hover:text-white'
                 }`}
               >
                 {label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-[#8b6cf7] to-[#22d3ee] transition-all duration-300 ${
+                  className={`absolute -bottom-1.5 left-0 h-0.5 bg-gradient-to-r from-amber-600 to-gold-primary transition-all duration-300 ${
                     isActive ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
@@ -114,31 +113,31 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Right Side: CTA Button */}
+        {/* Right CTA */}
         <div className="hidden md:block">
           <a
-            href={HIRE_ME_MAILTO(personalInfo.emails.primary)}
-            className="relative overflow-hidden px-6 py-2.5 rounded-full bg-white/10 border border-white/20 text-white font-semibold hover:border-[#8b6cf7]/60 hover:shadow-[0_0_20px_rgba(139,108,247,0.35)] transition-all duration-300 backdrop-blur-md hire-shine"
+            href={CONTACT_MAILTO(personalInfo.emails.primary)}
+            className="relative overflow-hidden px-5 py-2 rounded-full bg-slate-900 border border-gold-primary/30 text-gold-primary font-bold text-xs uppercase tracking-wider hover:border-gold-primary hover:bg-gold-primary hover:text-black transition-all duration-300 backdrop-blur-md hire-shine cursor-pointer shadow-sm"
           >
-            <span className="relative z-10">Hire Me</span>
+            <span className="relative z-10">Contact Me</span>
           </a>
         </div>
 
-        {/* Mobile Hamburger Menu Icon */}
+        {/* Hamburger */}
         <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu} className="text-white focus:outline-none p-2" aria-label="Toggle menu">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button onClick={toggleMenu} className="text-white focus:outline-none p-1.5 cursor-pointer" aria-label="Toggle menu">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
         </div>
       </div>
 
-      {/* Mobile Slide-Down Menu */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -147,27 +146,27 @@ const Navbar = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="md:hidden absolute top-full left-0 w-full overflow-hidden bg-[#0d0b1f]/95 backdrop-blur-xl shadow-2xl"
+            className="md:hidden absolute top-full left-4 right-4 mt-2 overflow-hidden bg-slate-950/95 backdrop-blur-xl shadow-2xl border border-gold-primary/20 rounded-3xl z-40"
           >
-            <div className="flex flex-col px-6 py-4 space-y-4">
+            <div className="flex flex-col px-6 py-5 space-y-4 text-left">
               {NAV_LINKS.map(({ label, href }) => (
                 <motion.a
                   key={label}
                   variants={MOBILE_LINK_VARIANTS}
                   href={href}
                   onClick={closeMenu}
-                  className="text-white/85 hover:text-white font-bold text-lg border-b border-white/10 pb-2 transition-colors"
+                  className="text-slate-300 hover:text-gold-primary font-bold text-base border-b border-slate-900 pb-2 transition-colors uppercase tracking-wider text-left"
                 >
                   {label}
                 </motion.a>
               ))}
-              <motion.div variants={MOBILE_LINK_VARIANTS} className="pt-2 pb-2">
+              <motion.div variants={MOBILE_LINK_VARIANTS} className="pt-2">
                 <a
-                  href={HIRE_ME_MAILTO(personalInfo.emails.primary)}
+                  href={CONTACT_MAILTO(personalInfo.emails.primary)}
                   onClick={closeMenu}
-                  className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-[#8b6cf7] to-[#22d3ee] text-white font-black hover:brightness-110 transition-all w-full text-center shadow-lg"
+                  className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-amber-600 via-gold-primary to-yellow-400 text-black font-bold uppercase tracking-wider hover:brightness-110 transition-all w-full text-center shadow-lg cursor-pointer"
                 >
-                  Hire Me
+                  Contact Me
                 </a>
               </motion.div>
             </div>
@@ -181,7 +180,7 @@ const Navbar = () => {
           position: absolute;
           top: 0; left: -60%;
           width: 40%; height: 100%;
-          background: linear-gradient(115deg, transparent, rgba(255,255,255,0.35), transparent);
+          background: linear-gradient(115deg, transparent, rgba(255,255,255,0.25), transparent);
           transform: skewX(-20deg);
           transition: left 0.75s ease;
         }
