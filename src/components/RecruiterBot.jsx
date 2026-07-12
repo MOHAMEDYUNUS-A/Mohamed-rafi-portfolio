@@ -73,6 +73,32 @@ Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72
 
 Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72446889)`,
 
+  matchmaker: `📊 SYNERGY MATCHMAKER
+Rafi's background is tailored to drive growth and operational compliance in the Gulf.
+
+Please select your organization's primary focus to view the specific synergy mapping:`,
+
+  match_logistics: `📊 RAFI & LOGISTICS SYNERGY MATCH: 98%
+• Core Value: 15+ years managing chemical 3PL logistics, terminal layouts, and polymer container exports.
+• Metric: Managed commercial BD/execution for USD 12M silos project, and handled 10,000 MT/year chemical DG warehousing.
+• Ideal For: Head of Logistics, BD Director, or terminal supply chain leader.
+
+Select another category or contact Rafi below:`,
+
+  match_hr: `📊 RAFI & MANPOWER/HR SYNERGY MATCH: 96%
+• Core Value: Directed 10 branches and 10,000+ outsourced staff deployments at Jaddarah Workforce Services.
+• Metric: Created payment recovery unit recovering SR 272 Million in overdue balances. Fully fluent in Qiwa, GOSI, and Wages Protection (WPS).
+• Ideal For: Regional Sales Director, HR Outsourcing Operations Leader, or GRC expert.
+
+Select another category or contact Rafi below:`,
+
+  match_automation: `📊 RAFI & INTRALOGISTICS AUTOMATION SYNERGY MATCH: 95%
+• Core Value: Bridges global tech providers (like E80 Group Italy) with tier-1 petrochemical end-users for unmanned systems.
+• Metric: Managed feasibility workflows for robotic stretch hood packaging and laser-guided vehicle integrations.
+• Ideal For: Smart warehousing projects and CAPEX business development initiatives.
+
+Select another category or contact Rafi below:`,
+
   default: `I can help you with questions about:
 • "logistics" (3PL, polymer export, Schmidt)
 • "manpower" (manpower services, Qiwa, GOSI)
@@ -88,11 +114,35 @@ What would you like to explore?`
 
 const SUGGESTIONS_POOLS = {
   default: [
+    { label: '📊 Synergy Matchmaker', keywords: ['matchmaker'] },
     { label: 'Career Timeline', keywords: ['career'] },
     { label: '3PL & Logistics', keywords: ['logistics'] },
     { label: 'Manpower & HR', keywords: ['workforce'] },
-    { label: 'Market Advisory', keywords: ['advisory'] },
     { label: 'Availability & Iqama', keywords: ['availability'] }
+  ],
+  matchmaker: [
+    { label: 'Logistics Operations', keywords: ['match_logistics'] },
+    { label: 'Manpower & HR Solutions', keywords: ['match_hr'] },
+    { label: 'Robotic Automation', keywords: ['match_automation'] },
+    { label: 'Main Menu', keywords: ['default'] }
+  ],
+  match_logistics: [
+    { label: 'Check HR Synergy', keywords: ['match_hr'] },
+    { label: 'Check Automation Synergy', keywords: ['match_automation'] },
+    { label: 'Get Contact Details', keywords: ['contact'] },
+    { label: 'Main Menu', keywords: ['default'] }
+  ],
+  match_hr: [
+    { label: 'Check Logistics Synergy', keywords: ['match_logistics'] },
+    { label: 'Check Automation Synergy', keywords: ['match_automation'] },
+    { label: 'Get Contact Details', keywords: ['contact'] },
+    { label: 'Main Menu', keywords: ['default'] }
+  ],
+  match_automation: [
+    { label: 'Check Logistics Synergy', keywords: ['match_logistics'] },
+    { label: 'Check HR Synergy', keywords: ['match_hr'] },
+    { label: 'Get Contact Details', keywords: ['contact'] },
+    { label: 'Main Menu', keywords: ['default'] }
   ],
   logistics: [
     { label: 'Silos Project', keywords: ['silos'] },
@@ -142,6 +192,18 @@ const SUGGESTIONS_POOLS = {
 const findBestAnswer = (query) => {
   const q = query.toLowerCase().trim();
   
+  if (q.includes('matchmaker') || q.includes('synergy') || q.includes('check')) {
+    return { text: BOT_ANSWERS.matchmaker, category: 'matchmaker' };
+  }
+  if (q.includes('match_logistics')) {
+    return { text: BOT_ANSWERS.match_logistics, category: 'match_logistics' };
+  }
+  if (q.includes('match_hr')) {
+    return { text: BOT_ANSWERS.match_hr, category: 'match_hr' };
+  }
+  if (q.includes('match_automation')) {
+    return { text: BOT_ANSWERS.match_automation, category: 'match_automation' };
+  }
   if (q.includes('logistics') || q.includes('3pl') || q.includes('schmidt') || q.includes('polymer') || q.includes('shipping') || q.includes('export')) {
     return { text: BOT_ANSWERS.logistics, category: 'logistics' };
   }
@@ -217,6 +279,7 @@ const RecruiterBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const [suggestions, setSuggestions] = useState(SUGGESTIONS_POOLS.default);
+  const [speakingMsgId, setSpeakingMsgId] = useState(null);
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -254,15 +317,63 @@ const RecruiterBot = () => {
     };
   }, [isOpen]);
 
-  const handleSend = (textToSend) => {
+  // Cancel Speech Synthesis on Component Unmount or Chat Close
+  useEffect(() => {
+    return () => {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
+  const toggleSpeech = (msgId, text) => {
+    if (typeof window === 'undefined' || !window.speechSynthesis) return;
+
+    if (speakingMsgId === msgId) {
+      window.speechSynthesis.cancel();
+      setSpeakingMsgId(null);
+    } else {
+      window.speechSynthesis.cancel();
+      
+      const cleanText = text
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1') // link tags
+        .replace(/•/g, '') // bullets
+        .replace(/\*/g, ''); // bold symbols
+        
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.onend = () => setSpeakingMsgId(null);
+      utterance.onerror = () => setSpeakingMsgId(null);
+      
+      setSpeakingMsgId(msgId);
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
+  const exportChatLog = () => {
+    const headerText = `=== MOHAMED RAFI - AI RECRUITER AGENT CONVERSATION LOG ===\nDate: ${new Date().toLocaleDateString()}\n\n`;
+    const bodyText = messages.map(msg => `[${msg.time}] ${msg.sender === 'user' ? 'Recruiter' : 'AI Agent'}: ${msg.text}`).join('\n\n');
+    const footerText = `\n\n=== END OF LOG. Contact Rafi at: mohamedrafi2512@gmail.com / +966 (0) 553 951 303 ===`;
+    
+    const blob = new Blob([headerText + bodyText + footerText], { type: 'text/plain;charset=utf-8' });
+    const blobUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = `Rafi_AI_Agent_ChatLog_${Date.now()}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.URL.revokeObjectURL(blobUrl);
+  };
+
+  const handleSend = (textToSend, displayLabel) => {
     const text = textToSend || inputVal;
     if (!text.trim()) return;
 
-    // Add user message
+    // Add user message with a human-readable display label if available
     const userMsg = {
       id: Date.now(),
       sender: 'user',
-      text,
+      text: displayLabel || text,
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
 
@@ -317,16 +428,29 @@ const RecruiterBot = () => {
                 </div>
               </div>
 
-              {/* Close Button */}
-              <button 
-                onClick={() => setIsOpen(false)} 
-                className="text-slate-400 hover:text-white p-1 focus:outline-none cursor-pointer"
-                aria-label="Close chat"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+              <div className="flex items-center gap-2">
+                {/* Export Chat Logs Button */}
+                <button
+                  onClick={exportChatLog}
+                  className="text-slate-400 hover:text-gold-primary p-1 focus:outline-none cursor-pointer transition-colors"
+                  title="Export Chat Conversation"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                </button>
+
+                {/* Close Button */}
+                <button 
+                  onClick={() => setIsOpen(false)} 
+                  className="text-slate-400 hover:text-white p-1 focus:outline-none cursor-pointer transition-colors"
+                  aria-label="Close chat"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             {/* Chat Messages Log */}
@@ -336,12 +460,33 @@ const RecruiterBot = () => {
                   key={msg.id} 
                   className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
                 >
-                  <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-xs leading-relaxed text-left ${
+                  <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-xs leading-relaxed text-left relative group/bubble ${
                     msg.sender === 'user' 
                       ? 'bg-gradient-to-r from-amber-600 to-gold-primary text-black font-extrabold shadow-md rounded-tr-none'
-                      : 'bg-slate-900 border border-gold-primary/10 text-slate-200 font-medium rounded-tl-none whitespace-pre-line'
+                      : 'bg-slate-900 border border-gold-primary/10 text-slate-200 font-medium rounded-tl-none whitespace-pre-line pr-8'
                   }`}>
                     {renderMessageText(msg.text)}
+
+                    {/* TTS Voice Button on Bot Messages */}
+                    {msg.sender === 'bot' && (
+                      <button
+                        onClick={() => toggleSpeech(msg.id, msg.text)}
+                        className="absolute right-2.5 bottom-2.5 opacity-0 group-hover/bubble:opacity-100 transition-opacity p-0.5 text-slate-400 hover:text-gold-primary focus:outline-none cursor-pointer"
+                        title="Read out loud"
+                      >
+                        {speakingMsgId === msg.id ? (
+                          <div className="flex gap-0.5 items-center h-3">
+                            <span className="w-[1.5px] h-2 bg-gold-primary animate-pulse" style={{ animationDelay: '0s' }} />
+                            <span className="w-[1.5px] h-3 bg-gold-primary animate-pulse" style={{ animationDelay: '0.15s' }} />
+                            <span className="w-[1.5px] h-1.5 bg-gold-primary animate-pulse" style={{ animationDelay: '0.3s' }} />
+                          </div>
+                        ) : (
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                          </svg>
+                        )}
+                      </button>
+                    )}
                   </div>
                   <span className="text-[8.5px] text-slate-500 mt-1 font-mono">{msg.time}</span>
                 </div>
@@ -369,7 +514,7 @@ const RecruiterBot = () => {
                 {suggestions.map(sug => (
                   <button
                     key={sug.label}
-                    onClick={() => handleSend(sug.keywords[0])}
+                    onClick={() => handleSend(sug.keywords[0], sug.label)}
                     disabled={isTyping}
                     className="px-2.5 py-1 text-[9.5px] font-bold rounded-full bg-slate-900 border border-gold-primary/15 text-slate-300 hover:border-gold-primary hover:text-white transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
                   >
