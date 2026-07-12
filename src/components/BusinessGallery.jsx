@@ -14,6 +14,8 @@ import img8 from '../assets/gallery/business8.jpeg';
 import img9 from '../assets/gallery/business9.jpeg';
 import img10 from '../assets/gallery/business10.jpeg';
 import img13 from '../assets/gallery/business13.jpeg';
+import imgWorkforce from '../assets/gallery/workforce.jpeg';
+import imgAward from '../assets/AWARDS/award_certificate.png';
 
 const CATEGORIES = [
   { id: 'all', label: 'All Operations' },
@@ -26,93 +28,114 @@ const CATEGORIES = [
 const GALLERY_ITEMS = [
   {
     id: 1,
-    title: 'Workforce Recruitment Campaign',
+    title: 'Recruitment Campaign with Client ACIC in Chennai',
     category: 'workforce',
     image: img1,
-    description: 'Spearheading large-scale global recruitment drives across India and Nepal to mobilize over 450+ candidates during key project phases.'
+    description: 'Spearheading large-scale global recruitment drives in Chennai for client ACIC to mobilize highly qualified workforce candidates.'
   },
   {
     id: 2,
-    title: 'TASNEE Silos EPC Project Site',
-    category: 'automation',
+    title: 'Sipchem- Argus Forum',
+    category: 'logistics',
     image: img2,
-    description: 'Oversaw the commercial execution and BD for the TASNEE Silos project handling Carbon Black products, valued at USD 12 Million.'
+    description: 'Representing commercial operations and logistics initiatives at the regional Sipchem-Argus Forum.'
   },
   {
     id: 3,
-    title: '3PL Chemical Storage Warehouse',
-    category: 'storage',
+    title: 'Farewell Bidding from Jaddarah',
+    category: 'workforce',
     image: img3,
-    description: 'Secured long-term chemical 3PL storage agreements for Aquaness and Nex Chemia, managing 10,000 MT/year under safe GRC compliance.'
+    description: 'Farewell bidding ceremony from Jaddarah Group, celebrating 08 long years of dedicated services in multiple roles.'
   },
   {
     id: 4,
-    title: 'Bulk Polymer Export Dispatch',
+    title: 'Schmidt 75 Year Anniversary',
     category: 'logistics',
     image: img4,
-    description: 'Supervising high-volume polymer cargo loading and containerization exports from Jubail to international ports.'
+    description: 'Celebrating 75 years of Karl Schmidt Group\'s logistics legacy and bulk logistics achievements.'
   },
   {
     id: 5,
-    title: 'Manpower Onboarding & WPS Portal',
-    category: 'workforce',
+    title: 'Meeting with Schmidt Board and Executive Management',
+    category: 'logistics',
     image: img5,
-    description: 'Managing Saudization, Qiwa, GOSI, and Mudad payroll integrations for regional industrial companies.'
+    description: 'Participating in high-level alignment meetings with the Karl Schmidt board and global executive management team.'
   },
   {
     id: 6,
-    title: 'Robotic Packaging Integration',
-    category: 'automation',
+    title: 'Team in Jubail HQ',
+    category: 'workforce',
     image: img6,
-    description: 'Deploying high-efficiency stretch hood packaging systems and automated robotic palletizers with engineering teams.'
+    description: 'Engaging with workforce operations and client onboarding support teams at the Jubail Headquarters.'
   },
   {
     id: 7,
-    title: 'Saudi Market Entry Council',
+    title: 'During 17 GPCA Annual Forum in Doha, Qatar with Schmidt Board and Executive Management',
     category: 'logistics',
     image: img7,
-    description: 'Facilitating commercial assessment, feasibility scoping, and industrial entry workflows for global corporations.'
+    description: 'Delegate networking at the 17th GPCA Annual Forum in Doha, Qatar alongside the Karl Schmidt board and leadership.'
   },
   {
     id: 8,
-    title: 'Schmidt ME Terminal Silos',
+    title: 'IPTC Forum in Kuala Lumpur, Malaysia',
     category: 'logistics',
     image: img8,
-    description: 'Optimizing polymer and chemical handling logistics, Silo layouts, and bulk dispatch at Karl Schmidt Middle East.'
+    description: 'Representing bulk operations and dry bulk supply chains during the IPTC conference in Kuala Lumpur, Malaysia.'
   },
   {
     id: 9,
-    title: 'Muqeem & Absher Audits',
-    category: 'workforce',
+    title: 'IPTC Forum in Kuala Lumpur, Malaysia',
+    category: 'logistics',
     image: img9,
-    description: 'Conducting regular GRC audits and SLA compliance checks for over 150+ corporate manpower client accounts.'
+    description: 'Aligning with international tech providers and energy delegates at the IPTC forum in Kuala Lumpur, Malaysia.'
   },
   {
     id: 10,
-    title: 'Stretch Hood Automated Systems',
-    category: 'automation',
+    title: 'Good Will Meetings with Key Potentials',
+    category: 'logistics',
     image: img10,
-    description: 'Integrating automated end-of-line packaging systems, optimizing product throughput and packaging reliability.'
+    description: 'Fostering strategic alliances and holding goodwill meetings with key potential regional clients.'
   },
   {
     id: 13,
-    title: 'E80 Automation Feasibility',
-    category: 'automation',
+    title: 'Sipchem- Argus Forum',
+    category: 'logistics',
     image: img13,
-    description: 'Collaborating with Italian tech providers E80 Group to assess unmanned warehousing and laser-guided vehicles.'
+    description: 'Analyzing market trends and petrochemical logistics solutions at the Sipchem-Argus Forum.'
   },
   {
     id: 0,
-    title: 'Jubail Logistics Operations',
+    title: 'Meeting with GPCA\'s Secretary',
     category: 'logistics',
     image: img0,
-    description: 'Coordination of port customs clearing, dry bulk containers, and intermodal transport movements.'
+    description: 'Strategic engagement meeting with the GPCA Secretary-General regarding local content and GCC logistics developments.'
+  },
+  {
+    id: 14,
+    title: 'Meeting with Workforce Saudia Executive Management',
+    category: 'workforce',
+    image: imgWorkforce,
+    description: 'A strategic alignment meeting recently held with the Workforce Saudia executive management team.'
+  },
+  {
+    id: 15,
+    title: 'Appreciation Award by S A Talke',
+    category: 'workforce',
+    image: imgAward,
+    description: 'Awarded by S.A. TALKE in recognition of outstanding logistics operations support and consistent service delivery.'
   }
 ];
 
 const BusinessGallery = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedItem, setSelectedItem] = useState(null);
+
+  const activeCategories = useMemo(() => {
+    return CATEGORIES.filter(cat => {
+      if (cat.id === 'all') return true;
+      return GALLERY_ITEMS.some(item => item.category === cat.id);
+    });
+  }, []);
 
   const filteredItems = useMemo(() => {
     if (activeCategory === 'all') return GALLERY_ITEMS;
@@ -144,7 +167,7 @@ const BusinessGallery = () => {
         {/* Categories Tab Selector - responsive scrollable */}
         <div data-aos="reveal-up" className="flex justify-start md:justify-center overflow-x-auto pb-4 mb-12 scrollbar-none gap-3">
           <div className="flex flex-nowrap gap-3 px-2 md:px-0">
-            {CATEGORIES.map(cat => {
+            {activeCategories.map(cat => {
               const isActive = activeCategory === cat.id;
               return (
                 <button

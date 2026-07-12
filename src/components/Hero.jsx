@@ -13,6 +13,7 @@ const Hero = () => {
   const rafRef = useRef(null);
   const [spot, setSpot] = useState({ x: 50, y: 50 });
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   // Scroll-linked background parallax and fade
   const { scrollY } = useScroll();
@@ -26,6 +27,13 @@ const Hero = () => {
       once: true,
       easing: "ease-out",
     });
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   // Ambient cursor-reactive spotlight
@@ -94,7 +102,7 @@ const Hero = () => {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full min-h-screen pt-20 pb-20 lg:pt-22 lg:pb-20 overflow-hidden bg-slate-dark flex items-center border-b border-gold-primary/15"
+      className="relative w-full min-h-screen pt-14 pb-14 lg:pt-16 lg:pb-16 overflow-hidden bg-slate-dark flex items-center border-b border-gold-primary/15"
       aria-label={`${personalInfo.name} portfolio hero section`}
     >
       {/* Premium Looping Background Video */}
@@ -153,13 +161,13 @@ const Hero = () => {
       <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] z-[8] pointer-events-none rounded-full blur-[140px] opacity-[var(--glow-opacity-10)] bg-gold-dark" />
 
       {/* Content Container Grid */}
-      <div className="relative z-20 px-6 py-8 md:py-12 lg:py-16 lg:px-12 max-w-7xl mx-auto w-full">
+      <div className="relative z-20 px-6 pt-3 pb-8 md:pt-4 md:pb-12 lg:pt-5 lg:pb-16 lg:px-12 max-w-7xl mx-auto w-full">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
           
           {/* Left Column: Left-aligned Text Content (7 Column width on desktop) */}
           <motion.div 
-            style={{ opacity, y, scale }}
+            style={isMobile ? {} : { opacity, y, scale }}
             className="lg:col-span-7 flex flex-col items-start text-left"
           >
             {/* Mobile Avatar Badge - visible only on mobile/tablet. Uses object-top to prevent clipping */}
