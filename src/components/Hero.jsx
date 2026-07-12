@@ -187,7 +187,7 @@ const Hero = () => {
             </motion.div>
 
             {/* Main Name Heading - word delays sync to preloader load duration */}
-            <h1 className="text-slate-50 text-[44px] leading-[1.05] md:text-[68px] lg:text-[76px] font-black mb-6 tracking-tight drop-shadow-[0_12px_40px_rgba(0,0,0,0.65)] select-none">
+            <h1 className="text-slate-50 text-[35px] sm:text-[44px] leading-[1.05] md:text-[68px] lg:text-[76px] font-black mb-6 tracking-tight drop-shadow-[0_12px_40px_rgba(0,0,0,0.65)] select-none">
               <span className="block overflow-hidden py-1">
                 {/* Mohamed Rafi (Large bold size) */}
                 <span
@@ -199,7 +199,7 @@ const Hero = () => {
                 
                 {/* Niyaz Deen (Reduced size, block alignment on new line) */}
                 <span
-                  className="word-reveal block text-[26px] md:text-[44px] lg:text-[48px] font-extrabold text-slate-350 tracking-tight mt-2.5"
+                  className="word-reveal block text-[20px] sm:text-[26px] md:text-[44px] lg:text-[48px] font-extrabold text-slate-350 tracking-tight mt-2.5"
                   style={{ animationDelay: '2.5s' }}
                 >
                   Niyaz Deen

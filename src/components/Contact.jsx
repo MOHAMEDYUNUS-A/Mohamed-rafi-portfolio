@@ -165,7 +165,7 @@ const Contact = () => {
   };
 
   return (
-    <section ref={ref} id="contact" className="bg-slate-dark w-full min-h-screen relative overflow-hidden pt-28 pb-32 px-6 md:px-12 border-t border-gold-primary/10 flex items-center">
+    <section ref={ref} id="contact" className="bg-slate-dark w-full min-h-screen relative overflow-hidden pt-16 pb-24 px-4 sm:px-6 md:px-12 border-t border-gold-primary/10 flex items-center">
       <Toaster position="bottom-right" reverseOrder={false} />
       
       {/* Background drifting glow accents */}
@@ -196,7 +196,7 @@ const Contact = () => {
               Get In Touch
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-black text-slate-50 mb-6 uppercase tracking-tight leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-50 mb-6 uppercase tracking-tight leading-[1.1]">
               Let's Align On <br className="hidden md:block" />
               Your Next Venture
             </h2>

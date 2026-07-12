@@ -130,7 +130,7 @@ const TechnicalSkills = () => {
   return (
     <section
       id="skills"
-      className="bg-slate-secondary pt-24 pb-28 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10"
+      className="bg-slate-secondary pt-16 pb-20 px-4 sm:px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10"
     >
       {/* Background glow — drifting */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-gold-primary/5 rounded-full blur-[120px] pointer-events-none skill-orb" />
@@ -141,11 +141,11 @@ const TechnicalSkills = () => {
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
-        <div data-aos="reveal-up" className="mb-16 text-center">
+        <div data-aos="reveal-up" className="mb-12 text-center">
           <div className="inline-block border border-gold-primary/20 rounded-full px-5 py-1.5 text-sm text-gold-primary font-bold mb-6 shadow-sm bg-slate-900/50 backdrop-blur-sm">
             Core Competencies
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-50 tracking-tight mb-4 uppercase">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-50 tracking-tight mb-4 uppercase">
             Executive Capabilities
           </h2>
           <p className="text-slate-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">

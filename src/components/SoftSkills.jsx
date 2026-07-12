@@ -69,16 +69,16 @@ const SoftSkills = () => {
   const { portfolioMode } = usePortfolio();
   const softSkillsList = portfolioMode === 'logistics' ? logisticsData.softSkills : hrData.softSkills;
   return (
-    <section className="bg-slate-primary pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10 bg-[linear-gradient(to_right,#e2b85702_1px,transparent_1px),linear-gradient(to_bottom,#e2b85702_1px,transparent_1px)] bg-[size:60px_60px]">
+    <section className="bg-slate-primary pt-16 pb-24 px-4 sm:px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10 bg-[linear-gradient(to_right,#e2b85702_1px,transparent_1px),linear-gradient(to_bottom,#e2b85702_1px,transparent_1px)] bg-[size:60px_60px]">
 
       <div className="max-w-6xl mx-auto relative z-20">
         
         {/* Header */}
-        <div data-aos="reveal-up" className="mb-16 md:mb-20 text-center">
+        <div data-aos="reveal-up" className="mb-12 md:mb-16 text-center">
           <div className="inline-block border border-gold-primary/20 rounded-full px-5 py-1.5 text-sm text-gold-primary font-bold mb-6 shadow-sm bg-slate-900/50 backdrop-blur-sm">
             Core Competencies
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-50 tracking-tight mb-4 uppercase">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-50 tracking-tight mb-4 uppercase">
             Professional Traits
           </h2>
           <p className="text-slate-400 text-base md:text-lg max-w-lg mx-auto leading-relaxed">

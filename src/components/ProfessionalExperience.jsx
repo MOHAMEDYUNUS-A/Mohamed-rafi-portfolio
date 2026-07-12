@@ -76,7 +76,7 @@ const ExperienceCard = ({ exp, index }) => {
       ref={ref}
       data-aos="reveal-up"
       data-aos-delay={index * 100}
-      className="group relative bg-slate-950/60 backdrop-blur-md border border-gold-primary/15 rounded-3xl p-8 hover:-translate-y-1 hover:scale-[1.01] hover:border-gold-primary/40 hover:bg-slate-950/80 hover:shadow-[0_20px_50px_rgba(226,184,87,0.05)] transition-all duration-500 flex flex-col justify-between mobile-optimized"
+      className="group relative bg-slate-950/60 backdrop-blur-md border border-gold-primary/15 rounded-3xl p-6 sm:p-8 hover:-translate-y-1 hover:scale-[1.01] hover:border-gold-primary/40 hover:bg-slate-950/80 hover:shadow-[0_20px_50px_rgba(226,184,87,0.05)] transition-all duration-500 flex flex-col justify-between mobile-optimized"
     >
       {/* Corner glow on hover */}
       <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-gold-primary/0 group-hover:bg-gold-primary/5 blur-[50px] transition-all duration-500 pointer-events-none" />
@@ -100,7 +100,7 @@ const ExperienceCard = ({ exp, index }) => {
           </div>
         </div>
 
-        <h3 className="text-slate-50 text-2xl font-black mb-1 tracking-tight group-hover:text-gold-primary transition-colors">{exp.role}</h3>
+        <h3 className="text-slate-50 text-xl sm:text-2xl font-black mb-1 tracking-tight group-hover:text-gold-primary transition-colors">{exp.role}</h3>
         <p className="text-gold-light text-sm font-black tracking-wide mb-6 uppercase">
           {exp.organization}
         </p>
@@ -157,7 +157,7 @@ const ProfessionalExperience = () => {
   const { portfolioMode } = usePortfolio();
   const internshipsList = portfolioMode === 'logistics' ? logisticsData.experience : hrData.experience;
   return (
-    <section id="experience" className="bg-slate-dark pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10">
+    <section id="experience" className="bg-slate-dark pt-16 pb-24 px-4 sm:px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10">
       {/* Ambient drifting glow orbs */}
       <div className="absolute top-10 -left-1/4 w-[55%] h-[55%] pointer-events-none rounded-full blur-[130px] opacity-[var(--glow-opacity-10)] bg-gold-primary experience-orb" />
       <div
@@ -167,11 +167,11 @@ const ProfessionalExperience = () => {
 
       <div className="max-w-6xl mx-auto relative z-20">
         {/* Header */}
-        <div data-aos="reveal-up" className="mb-16 md:mb-20 text-center">
+        <div data-aos="reveal-up" className="mb-12 md:mb-16 text-center">
           <div className="inline-block border border-gold-primary/20 rounded-full px-5 py-1.5 text-sm text-gold-primary font-bold mb-6 shadow-sm bg-slate-900/50 backdrop-blur-sm">
             Timeline
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-50 mb-4 tracking-tight uppercase">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-50 mb-4 tracking-tight uppercase">
             Professional Experience
           </h2>
           <p className="text-slate-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">

@@ -9,7 +9,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative w-full overflow-hidden font-sans pt-24 pb-36 px-6 md:px-12 bg-gradient-to-br from-slate-primary via-slate-darker to-slate-dark border-y border-gold-primary/10"
+      className="relative w-full overflow-hidden font-sans pt-16 pb-24 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-slate-primary via-slate-darker to-slate-dark border-y border-gold-primary/10"
     >
       {/* Executive grid accent pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(226,184,87,0.015)_25%,transparent_25%,transparent_50%,rgba(226,184,87,0.015)_50%,rgba(226,184,87,0.015)_75%,transparent_75%,transparent)] bg-[size:40px_40px] pointer-events-none" />
@@ -26,9 +26,9 @@ const About = () => {
         <div data-aos="reveal-right" data-aos-delay="100" className="flex flex-col items-center w-full md:w-[320px] shrink-0 mt-8 md:mt-0">
           <div className="id-badge relative flex justify-center w-full" style={{ transformOrigin: 'top center' }}>
             {/* Lanyard string */}
-            <div className="absolute -top-32 left-1/2 w-2.5 h-40 bg-slate-900 transform -translate-x-1/2 shadow-inner z-0" />
+            <div className="hidden md:block absolute -top-32 left-1/2 w-2.5 h-40 bg-slate-900 transform -translate-x-1/2 shadow-inner z-0" />
             {/* Lanyard clip */}
-            <div className="absolute -top-6 left-1/2 w-5 h-12 bg-amber-700/80 rounded border border-amber-600 transform -translate-x-1/2 z-10 shadow-[0_2px_10px_rgba(0,0,0,0.3)]" />
+            <div className="hidden md:block absolute -top-6 left-1/2 w-5 h-12 bg-amber-700/80 rounded border border-amber-600 transform -translate-x-1/2 z-10 shadow-[0_2px_10px_rgba(0,0,0,0.3)]" />
 
             {/* Badge Card with Gold glow and corporate design */}
             <div className="bg-slate-950 w-full max-w-[270px] rounded-2xl p-4 shadow-[0_25px_60px_rgba(0,0,0,0.65)] border border-gold-primary/30 relative z-20 overflow-hidden flex flex-col items-center">
@@ -87,7 +87,7 @@ const About = () => {
 
         {/* Right Side: Info Content with Right-Reveal animation */}
         <div data-aos="reveal-left" data-aos-delay="200" className="flex-1 text-slate-50 mt-8 md:mt-0 text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl font-black text-slate-50 mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.25)] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-50 mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.25)] tracking-tight">
             {aboutContent.heading}
           </h2>
           

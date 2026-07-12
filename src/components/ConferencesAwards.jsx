@@ -112,7 +112,7 @@ const ConferencesAwards = () => {
   const certificates = portfolioMode === 'logistics' ? logisticsData.certificates : hrData.certificates;
 
   return (
-    <section id="credentials" className="bg-slate-dark pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10">
+    <section id="credentials" className="bg-slate-dark pt-16 pb-24 px-4 sm:px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10">
 
       {/* Ambient glows */}
       <div className="absolute -top-40 -left-40 w-[28rem] h-[28rem] bg-gold-primary/5 rounded-full blur-[120px] pointer-events-none" />
@@ -132,7 +132,7 @@ const ConferencesAwards = () => {
               Credentials
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-black text-slate-50 leading-[1.1] mb-6 tracking-tight uppercase">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-50 leading-[1.1] mb-6 tracking-tight uppercase">
               Awards &amp; <br />Conferences
             </h2>
             

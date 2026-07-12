@@ -280,6 +280,7 @@ const RecruiterBot = () => {
   const [showNotification, setShowNotification] = useState(false);
   const [suggestions, setSuggestions] = useState(SUGGESTIONS_POOLS.default);
   const [speakingMsgId, setSpeakingMsgId] = useState(null);
+  const [isMuted, setIsMuted] = useState(false);
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -326,8 +327,21 @@ const RecruiterBot = () => {
     };
   }, []);
 
+  const toggleMute = () => {
+    const nextMuted = !isMuted;
+    setIsMuted(nextMuted);
+    if (nextMuted && typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      setSpeakingMsgId(null);
+    }
+  };
+
   const toggleSpeech = (msgId, text) => {
     if (typeof window === 'undefined' || !window.speechSynthesis) return;
+
+    if (isMuted) {
+      setIsMuted(false);
+    }
 
     if (speakingMsgId === msgId) {
       window.speechSynthesis.cancel();
@@ -401,7 +415,7 @@ const RecruiterBot = () => {
   };
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 font-sans">
+    <div className="fixed bottom-6 right-6 z-50 font-sans">
       <AnimatePresence>
         {/* Chat Window Panel */}
         {isOpen && (
@@ -429,6 +443,23 @@ const RecruiterBot = () => {
               </div>
 
               <div className="flex items-center gap-2">
+                {/* Sound Mute Toggle Button */}
+                <button
+                  onClick={toggleMute}
+                  className="text-slate-400 hover:text-gold-primary p-1 focus:outline-none cursor-pointer transition-colors"
+                  title={isMuted ? "Unmute Voice" : "Mute Voice"}
+                >
+                  {isMuted ? (
+                    <svg className="w-4 h-4 text-amber-500/80" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6L1.5 12h3m2.25-3.75v7.5M10.5 5.25L5.25 9H2.25v6h3l5.25 3.75V5.25z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-4 h-4 text-gold-primary" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                    </svg>
+                  )}
+                </button>
+
                 {/* Export Chat Logs Button */}
                 <button
                   onClick={exportChatLog}
@@ -557,7 +588,7 @@ const RecruiterBot = () => {
             initial={{ opacity: 0, scale: 0.85, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: 15 }}
-            className="absolute bottom-18 left-0 w-64 bg-slate-950/95 border border-gold-primary/35 rounded-2xl p-3 shadow-[0_10px_35px_rgba(0,0,0,0.6)] backdrop-blur-md flex items-start gap-2.5 z-20 cursor-pointer"
+            className="absolute bottom-18 right-0 w-64 bg-slate-950/95 border border-gold-primary/35 rounded-2xl p-3 shadow-[0_10px_35px_rgba(0,0,0,0.6)] backdrop-blur-md flex items-start gap-2.5 z-20 cursor-pointer"
             onClick={() => setIsOpen(true)}
           >
             <div className="text-sm shrink-0">👔</div>
