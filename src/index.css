@@ -47,6 +47,57 @@
   --text-gradient-start: #ffffff;
   --text-gradient-middle: #f5ebd1;
   --text-gradient-end: #e2b857;
+
+  /* ============================================================
+     PREMIUM ADDITIONS (dark mode) — new variables only, nothing
+     above is changed. These extend the palette with richer
+     shadows, glass surfaces, shimmer, and finer gold steps.
+     ============================================================ */
+
+  /* Finer gold scale for more nuanced highlights/hovers */
+  --gold-50: #fbf6e8;
+  --gold-100: #f5ebd1;
+  --gold-200: #ecdcae;
+  --gold-300: #e2c882;
+  --gold-400: #e2b857;
+  --gold-500: #d4af37;
+  --gold-600: #c5a85c;
+  --gold-700: #a3873f;
+  --gold-800: #7c672f;
+  --gold-900: #574a24;
+
+  /* Rich, layered elevation shadows for cards/panels */
+  --shadow-elevation-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-elevation-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-elevation-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+  --shadow-gold-glow: 0 0 40px rgba(226, 184, 87, var(--glow-opacity-15));
+  --shadow-gold-glow-soft: 0 0 80px rgba(226, 184, 87, var(--glow-opacity-10));
+
+  /* Glassmorphism surface tokens */
+  --glass-bg: rgba(15, 23, 42, 0.45);
+  --glass-border: rgba(226, 184, 87, 0.18);
+  --glass-blur: 18px;
+
+  /* Premium easing curves */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Shimmer sweep for gold text/buttons */
+  --shimmer-gradient: linear-gradient(100deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 70%);
+
+  /* Hairline gradient border for premium cards */
+  --border-gradient-gold: linear-gradient(135deg, var(--gold-light), var(--gold-accent), var(--gold-dark));
+
+  /* Radial ambient glow tokens for hero/section backgrounds */
+  --glow-radial-gold: radial-gradient(circle at 50% 0%, rgba(226, 184, 87, var(--glow-opacity-10)), transparent 60%);
+  --glow-radial-slate: radial-gradient(circle at 50% 100%, rgba(30, 41, 59, 0.6), transparent 60%);
+
+  /* Letter-spacing / typography refinements for premium headings */
+  --tracking-tight-luxe: -0.02em;
+  --tracking-wide-luxe: 0.08em;
 }
 
 .light {
@@ -96,6 +147,48 @@
   --text-gradient-start: #0f172a;
   --text-gradient-middle: #334155;
   --text-gradient-end: #a17410;
+
+  /* ============================================================
+     PREMIUM ADDITIONS (light mode) — mirrors the dark-mode tokens
+     above with values tuned for readability on light backgrounds.
+     ============================================================ */
+
+  --gold-50: #3d2e0a;
+  --gold-100: #52400d;
+  --gold-200: #66500f;
+  --gold-300: #7c5e12;
+  --gold-400: #8b650f;
+  --gold-500: #a17410;
+  --gold-600: #b98914;
+  --gold-700: #d4a437;
+  --gold-800: #e6c169;
+  --gold-900: #f5ebd1;
+
+  --shadow-elevation-sm: 0 2px 8px rgba(15, 23, 42, 0.08);
+  --shadow-elevation-md: 0 10px 30px rgba(15, 23, 42, 0.12);
+  --shadow-elevation-lg: 0 24px 60px rgba(15, 23, 42, 0.16);
+  --shadow-gold-glow: 0 0 40px rgba(161, 116, 16, var(--glow-opacity-15));
+  --shadow-gold-glow-soft: 0 0 80px rgba(161, 116, 16, var(--glow-opacity-10));
+
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(161, 116, 16, 0.22);
+  --glass-blur: 18px;
+
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --shimmer-gradient: linear-gradient(100deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.75) 50%,
+      transparent 70%);
+
+  --border-gradient-gold: linear-gradient(135deg, var(--gold-light), var(--gold-accent), var(--gold-dark));
+
+  --glow-radial-gold: radial-gradient(circle at 50% 0%, rgba(161, 116, 16, var(--glow-opacity-10)), transparent 60%);
+  --glow-radial-slate: radial-gradient(circle at 50% 100%, rgba(226, 232, 240, 0.6), transparent 60%);
+
+  --tracking-tight-luxe: -0.02em;
+  --tracking-wide-luxe: 0.08em;
 }
 
 @theme {
@@ -123,11 +216,77 @@
   --color-slate-100: var(--slate-100);
   --color-slate-50: var(--slate-50);
 
+  /* Premium additions: expose the finer gold scale + glass/shadow
+     tokens as Tailwind utilities too (e.g. bg-gold-300, shadow-elevation-md) */
+  --color-gold-50: var(--gold-50);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-gold-800: var(--gold-800);
+  --color-gold-900: var(--gold-900);
+
+  --shadow-elevation-sm: var(--shadow-elevation-sm);
+  --shadow-elevation-md: var(--shadow-elevation-md);
+  --shadow-elevation-lg: var(--shadow-elevation-lg);
+  --shadow-gold-glow: var(--shadow-gold-glow);
+  --shadow-gold-glow-soft: var(--shadow-gold-glow-soft);
+
   --animate-float: float 6s ease-in-out infinite;
 
+  /* Premium additions: new named animations available as
+     Tailwind utilities (e.g. animate-shimmer, animate-glow-pulse) */
+  --animate-shimmer: shimmer 2.5s linear infinite;
+  --animate-glow-pulse: glow-pulse 3.5s ease-in-out infinite;
+  --animate-drift: drift 10s ease-in-out infinite;
+
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes glow-pulse {
+
+    0%,
+    100% {
+      opacity: var(--glow-opacity-10);
+    }
+
+    50% {
+      opacity: var(--glow-opacity-15);
+    }
+  }
+
+  @keyframes drift {
+
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+      transform: translate(12px, -12px);
+    }
   }
 }
 
@@ -149,31 +308,58 @@ body {
 [data-aos="drop-bounce"] {
   opacity: 0;
 }
+
 [data-aos="drop-bounce"].aos-animate {
   animation: dropBounce 1.2s cubic-bezier(0.28, 0.84, 0.42, 1) forwards;
 }
 
 @keyframes dropBounce {
-  0% { transform: translateY(-300px); opacity: 0; }
-  50% { transform: translateY(0); opacity: 1; }
-  65% { transform: translateY(-40px); opacity: 1; }
-  80% { transform: translateY(0); opacity: 1; }
-  90% { transform: translateY(-15px); opacity: 1; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(-300px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  65% {
+    transform: translateY(-40px);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  90% {
+    transform: translateY(-15px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Custom scrollbar matching gold theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-body);
   transition: background-color 0.3s ease;
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--gold-dark);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--gold-primary);
 }
@@ -200,6 +386,7 @@ body {
   filter: blur(4px);
   transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 [data-aos="reveal-up"].aos-animate {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -212,6 +399,7 @@ body {
   filter: blur(4px);
   transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 [data-aos="reveal-right"].aos-animate {
   opacity: 1;
   transform: translateX(0);
@@ -224,6 +412,7 @@ body {
   filter: blur(4px);
   transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 [data-aos="reveal-left"].aos-animate {
   opacity: 1;
   transform: translateX(0);
@@ -236,9 +425,152 @@ body {
   filter: blur(4px);
   transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 [data-aos="reveal-zoom"].aos-animate {
   opacity: 1;
   transform: scale(1);
   filter: blur(0);
 }
 
+/* ============================================================
+   PREMIUM UTILITY CLASSES
+   New, opt-in classes built from the tokens above. Nothing
+   existing is modified — apply these wherever you want the
+   extra polish.
+   ============================================================ */
+
+/* Glass card surface with gold hairline border */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--shadow-elevation-md);
+  border-radius: 1rem;
+}
+
+/* Gradient hairline border using padding-box/border-box trick */
+.border-gold-gradient {
+  position: relative;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.border-gold-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  margin: -1px;
+  border-radius: inherit;
+  background: var(--border-gradient-gold);
+}
+
+/* Animated shimmer sweep for gold text or premium badges */
+.text-shimmer {
+  background: linear-gradient(100deg,
+      var(--gold-dark) 30%,
+      var(--gold-light) 50%,
+      var(--gold-dark) 70%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Ambient glow backdrop for hero/section wrappers */
+.ambient-glow {
+  position: relative;
+  isolation: isolate;
+}
+
+.ambient-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--glow-radial-gold), var(--glow-radial-slate);
+  pointer-events: none;
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+/* Soft floating drift for decorative background elements */
+.drift-slow {
+  animation: drift 12s ease-in-out infinite;
+}
+
+/* Elevated surface helper classes tied to the new shadow tokens */
+.shadow-elevation-sm {
+  box-shadow: var(--shadow-elevation-sm);
+}
+
+.shadow-elevation-md {
+  box-shadow: var(--shadow-elevation-md);
+}
+
+.shadow-elevation-lg {
+  box-shadow: var(--shadow-elevation-lg);
+}
+
+.shadow-gold-glow {
+  box-shadow: var(--shadow-gold-glow);
+}
+
+.shadow-gold-glow-soft {
+  box-shadow: var(--shadow-gold-glow-soft);
+}
+
+/* Luxe letter-spacing helpers for headings vs. eyebrow labels */
+.tracking-luxe-tight {
+  letter-spacing: var(--tracking-tight-luxe);
+}
+
+.tracking-luxe-wide {
+  letter-spacing: var(--tracking-wide-luxe);
+  text-transform: uppercase;
+}
+
+/* Premium button treatment: gold gradient fill with shimmer sweep on hover */
+.btn-gold-premium {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+  color: var(--slate-950);
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.75rem 1.75rem;
+  box-shadow: var(--shadow-gold-glow);
+  transition: transform 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium);
+}
+
+.btn-gold-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold-glow-soft), var(--shadow-elevation-lg);
+}
+
+.btn-gold-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--shimmer-gradient);
+  background-size: 200% 100%;
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-gold-premium:hover::before {
+  transform: translateX(100%);
+}
+
+/* Respect reduced-motion preference for all new decorative animation */
+@media (prefers-reduced-motion: reduce) {
+
+  .text-shimmer,
+  .ambient-glow::before,
+  .drift-slow {
+    animation: none;
+  }
+}
