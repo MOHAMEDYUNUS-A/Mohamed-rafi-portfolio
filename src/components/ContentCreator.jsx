@@ -1,5 +1,6 @@
 import React from 'react';
-import { contentCreation, socialLinks } from '../data/portfolioData';
+import { logisticsData, hrData, socialLinks } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 
 // Import GPCA Logo image for the Global Network section
 import gpcaLogo from '../assets/AWARDS/GPCA.jpeg';
@@ -12,14 +13,14 @@ const LinkedInIcon = () => (
 
 const CreatorIcon = ({ icon, title }) => {
   if (title.toLowerCase().includes('gpca')) {
-    return <img src={gpcaLogo} alt="GPCA logo" className="w-full h-full object-contain" />;
+    return <img src={gpcaLogo} alt="GPCA logo" loading="lazy" className="w-full h-full object-contain" />;
   }
   return <span className="text-3xl">{icon}</span>;
 };
 
 const CreatorCard = ({ category, index }) => (
   <div 
-    data-aos="fade-up"
+    data-aos="reveal-up"
     data-aos-delay={index * 100}
     className="bg-slate-950/50 backdrop-blur-md border border-gold-primary/10 rounded-3xl p-8 hover:scale-[1.02] hover:border-gold-primary/30 hover:shadow-[0_20px_50px_rgba(226,184,87,0.05)] transition-all duration-500 group flex flex-col justify-between"
   >
@@ -34,7 +35,7 @@ const CreatorCard = ({ category, index }) => (
         </span>
       </div>
       
-      <h3 className="text-white text-xl md:text-2xl font-black mb-3 tracking-tight group-hover:text-gold-primary transition-colors text-left">
+      <h3 className="text-slate-50 text-xl md:text-2xl font-black mb-3 tracking-tight group-hover:text-gold-primary transition-colors text-left">
         {category.title}
       </h3>
       
@@ -53,8 +54,10 @@ const CreatorCard = ({ category, index }) => (
 );
 
 const ContentCreator = () => {
+  const { portfolioMode } = usePortfolio();
+  const contentCreation = portfolioMode === 'logistics' ? logisticsData.contentCreator : hrData.contentCreator;
   return (
-    <section id="creator" className="bg-[#080c14] pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10 bg-[linear-gradient(to_right,#e2b85702_1px,transparent_1px),linear-gradient(to_bottom,#e2b85702_1px,transparent_1px)] bg-[size:80px_80px]">
+    <section id="creator" className="bg-slate-dark pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10 bg-[linear-gradient(to_right,#e2b85702_1px,transparent_1px),linear-gradient(to_bottom,#e2b85702_1px,transparent_1px)] bg-[size:80px_80px]">
       
       {/* Visual background lights */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold-primary/5 rounded-full blur-[160px] pointer-events-none" />
@@ -62,11 +65,11 @@ const ContentCreator = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Header */}
-        <div data-aos="fade-up" className="mb-16 md:mb-20 text-center">
+        <div data-aos="reveal-up" className="mb-16 md:mb-20 text-center">
           <div className="inline-block border border-gold-primary/20 rounded-full px-5 py-1.5 text-sm text-gold-primary font-bold mb-6 shadow-sm bg-slate-900/50 backdrop-blur-sm">
             {contentCreation.badge}
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6 tracking-tight uppercase">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-50 leading-[1.1] mb-6 tracking-tight uppercase">
             {contentCreation.heading}
           </h2>
           <p className="text-slate-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
@@ -90,7 +93,7 @@ const ContentCreator = () => {
         </div>
 
         {/* LinkedIn CTA */}
-        <div data-aos="fade-up" data-aos-delay="400" className="mt-16 flex justify-center">
+        <div data-aos="reveal-up" data-aos-delay="400" className="mt-16 flex justify-center">
           <a
             href={socialLinks.linkedin}
             target="_blank"

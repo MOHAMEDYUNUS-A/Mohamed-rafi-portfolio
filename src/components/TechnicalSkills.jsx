@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { technicalSkills } from '../data/portfolioData';
+import { logisticsData, hrData } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 
 // --- Helpers -------------------------------------------------------------
 
@@ -66,7 +67,7 @@ const SkillProgress = ({ name, level, animate, delay }) => {
   return (
     <div className="mb-5 group/skill">
       <div className="flex justify-between items-center mb-1.5">
-        <span className="text-slate-300 text-sm font-semibold tracking-wide group-hover/skill:text-white transition-colors">{name}</span>
+        <span className="text-slate-300 text-sm font-semibold tracking-wide group-hover/skill:text-slate-50 transition-colors">{name}</span>
         <span className="flex items-center gap-2">
           <span className="hidden group-hover/skill:inline text-slate-500 text-[10px] font-bold uppercase tracking-wider transition-opacity">
             {proficiencyLabel(level)}
@@ -95,14 +96,14 @@ const SkillCard = ({ category, index }) => {
   return (
     <div
       ref={ref}
-      data-aos="fade-up"
+      data-aos="reveal-up"
       data-aos-delay={index * 100}
       className="group relative bg-slate-950/65 backdrop-blur-md border border-gold-primary/10 rounded-2xl p-6 hover:scale-[1.02] hover:border-gold-primary/30 hover:shadow-[0_20px_50px_rgba(226,184,87,0.06)] transition-all duration-500"
     >
       {/* Corner glow on hover */}
       <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-gold-primary/0 group-hover:bg-gold-primary/5 blur-[50px] transition-all duration-500 pointer-events-none" />
 
-      <h3 className="relative text-white text-lg font-black tracking-tight mb-6 pb-2 border-b border-gold-primary/15 uppercase flex items-center justify-between">
+      <h3 className="relative text-slate-50 text-lg font-black tracking-tight mb-6 pb-2 border-b border-gold-primary/15 uppercase flex items-center justify-between">
         {category.title}
         <span className="text-[10px] text-slate-500 font-mono normal-case tracking-normal">
           {category.skills.length} domains
@@ -124,10 +125,12 @@ const SkillCard = ({ category, index }) => {
 };
 
 const TechnicalSkills = () => {
+  const { portfolioMode } = usePortfolio();
+  const technicalSkills = portfolioMode === 'logistics' ? logisticsData.technicalSkills : hrData.technicalSkills;
   return (
     <section
       id="skills"
-      className="bg-[#0a0e17] pt-24 pb-28 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10"
+      className="bg-slate-secondary pt-24 pb-28 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10"
     >
       {/* Background glow — drifting */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-gold-primary/5 rounded-full blur-[120px] pointer-events-none skill-orb" />
@@ -138,11 +141,11 @@ const TechnicalSkills = () => {
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
-        <div data-aos="fade-up" className="mb-16 text-center">
+        <div data-aos="reveal-up" className="mb-16 text-center">
           <div className="inline-block border border-gold-primary/20 rounded-full px-5 py-1.5 text-sm text-gold-primary font-bold mb-6 shadow-sm bg-slate-900/50 backdrop-blur-sm">
             Core Competencies
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4 uppercase">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-50 tracking-tight mb-4 uppercase">
             Executive Capabilities
           </h2>
           <p className="text-slate-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">

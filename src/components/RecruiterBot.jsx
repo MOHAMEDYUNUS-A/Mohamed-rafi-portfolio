@@ -7,7 +7,7 @@ const BOT_ANSWERS = {
 • Secured long-term 3PL chemical storage contracts (Aquaness & Nex Chemia) for 10,000 MT/year.
 • Operationalized high-volume polymer container export flows of 100-200 containers monthly from Jubail to Genoa, Italy.
 
-Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/)`,
+Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72446889)`,
 
   workforce: `Rafi is highly expert in HR solutions, manpower outsourcing, and Saudi labor compliance:
 • Currently the Regional Sales Manager at Workforce Saudia.
@@ -15,14 +15,14 @@ Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3
 • Fully fluent in Qiwa, GOSI, WPS (Mudad), Muqeem, Absher Business, and Nitaqat (Saudization).
 • Managed end-to-end global campaigns (India, Nepal) and drove SAR 25M in monthly revenues.
 
-Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/)`,
+Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72446889)`,
 
   automation: `Rafi bridges industrial end-users with global tech providers for smart warehousing and robotics:
 • Led intralogistics plant layouts and robotic automation integrations.
 • Integrated robotic arms and stretch hood packaging machines, securing approvals for projects like JPP (unmanned packaging project) and Ravago ME.
 • Collaborated with technology giants like E80 Group (Italy) and S.A. TALKE on full-scale automation feasibility studies.
 
-Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/)`,
+Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72446889)`,
 
   contact: `Here is Rafi's contact information:
 • Location: Al-Jubail, Kingdom of Saudi Arabia
@@ -30,19 +30,19 @@ Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3
 • Email: mohamedrafi2512@gmail.com
 • Phone/WhatsApp: +966 (0) 553 951 303
 
-Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/)`,
+Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72446889)`,
 
   milestones: `Some of Rafi's major strategic wins:
 1. Silos EPC Project: Led commercial alignment and BD for the TASNEE Silos project (Carbon Black products) valued at USD 12 Million.
 2. Collections Recovery: Launched a payment recovery unit at Jaddarah Workforce, successfully recovering SR 272 Million in overdue payments.
 3. COVID-19 Mobilization: Recruited and mobilized 450+ candidates internationally under quarantine restrictions, generating SR 450K/month.
 
-Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/)`,
+Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72446889)`,
 
   education: `Mohamed Rafi holds:
 • Bachelor of Science (B.Sc.) degree from Bharathidasan University, Tiruchirappalli, Tamil Nadu, India (Graduated in 2009).
 
-Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/)`,
+Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72446889)`,
 
   personal: `Personal Details for Rafi:
 • Nationality: Indian (Passport T9285897, valid until August 2030)
@@ -50,7 +50,7 @@ Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3
 • Born: June 28, 1988
 • Current Location: Al-Jubail (Transferable Iqama)
 
-Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/)`,
+Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72446889)`,
 
   career: `Mohamed Rafi's 15+ years career timeline:
 • Oct 2025–Present: Regional Sales Manager at Workforce Saudia (Manpower & HR Outsourcing)
@@ -61,17 +61,17 @@ Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3
 • 2012–2014: BD & Operations Executive at Plus Max Malaysia
 • 2010–2012: HR Executive at Coastline Group India
 
-Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/)`,
+Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72446889)`,
 
   advisory: `As Head of BD at TechPulse, Rafi acts as a key consultant for international players entering the Saudi market:
 • Guided E80 Group (Italian automation provider), ADK Blasts Corp (South Korea), and Handled (USA) through local corporate incorporation.
 • Structured their GOSI, Qiwa, recruitment channels, and local payroll onboarding to ensure compliance-first market entry.
 
-Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/)`,
+Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72446889)`,
 
   availability: `Rafi resides in Al-Jubail, KSA with a fully Transferable Iqama (No. 2529781821) and is ready for transition. Notice period is subject to discussion (typically standard 1 month or immediate for key opportunities). You can inquire about salary expectations and terms directly at mohamedrafi2512@gmail.com or +966 (0) 553 951 303.
 
-Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyaz-deen-3694b81b5/)`,
+Source: [LinkedIn Profile](https://www.linkedin.com/in/mohamed-rafi-niyazdeen-72446889)`,
 
   default: `I can help you with questions about:
 • "logistics" (3PL, polymer export, Schmidt)

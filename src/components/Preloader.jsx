@@ -48,135 +48,113 @@ const Preloader = () => {
           key="preloader"
           initial={{ y: 0 }}
           exit={{ y: '-100%' }}
-          transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 w-full h-screen z-[100000] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#080c14] via-[#0b0f19] to-[#121824]"
+          transition={{ duration: 1.0, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 w-full h-screen z-[100000] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#07090f] via-[#0b0f19] to-[#030508]"
         >
-          {/* Ambient drifting glow orbs */}
-          <div className="absolute -top-1/3 -left-1/4 w-[60%] h-[60%] pointer-events-none rounded-full blur-[130px] opacity-15 bg-gold-primary preloader-orb" />
+          {/* Atmospheric ambient glows */}
+          <div className="absolute top-1/4 left-1/4 w-[45vw] h-[45vw] pointer-events-none rounded-full blur-[140px] opacity-15 bg-gold-primary preloader-glow" />
           <div
-            className="absolute -bottom-1/3 -right-1/4 w-[55%] h-[55%] pointer-events-none rounded-full blur-[130px] opacity-10 bg-amber-600 preloader-orb"
-            style={{ animationDelay: '-6s', animationDirection: 'reverse' }}
+            className="absolute bottom-1/4 right-1/4 w-[40vw] h-[40vw] pointer-events-none rounded-full blur-[140px] opacity-10 bg-amber-600 preloader-glow"
+            style={{ animationDelay: '-4s', animationDirection: 'reverse' }}
           />
 
-          {/* Slowly rotating conic ring behind the logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.35, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="absolute w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full preloader-ring"
-          />
+          {/* Golden Circular Progress Ring */}
+          <div className="relative flex items-center justify-center select-none">
+            <svg className="w-28 h-28 md:w-36 md:h-36" viewBox="0 0 100 100">
+              {/* Back track circle */}
+              <circle
+                cx="50"
+                cy="50"
+                r="44"
+                fill="none"
+                stroke="rgba(226, 184, 87, 0.05)"
+                strokeWidth="2.5"
+              />
+              {/* Animated Progress circle */}
+              <motion.circle
+                cx="50"
+                cy="50"
+                r="44"
+                fill="none"
+                stroke="url(#preloader-gold)"
+                strokeWidth="3.2"
+                strokeLinecap="round"
+                strokeDasharray="276"
+                strokeDashoffset={276 - (276 * progress) / 100}
+                transform="rotate(-90 50 50)"
+                transition={{ duration: 0.1, ease: 'linear' }}
+              />
+              <defs>
+                <linearGradient id="preloader-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#f5d061" />
+                  <stop offset="50%" stopColor="#e2b857" />
+                  <stop offset="100%" stopColor="#c5a85c" />
+                </linearGradient>
+              </defs>
+            </svg>
 
-          {/* Logo Container */}
-          <motion.div
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="relative text-5xl md:text-7xl font-black tracking-tighter"
-          >
-            {/* Background text */}
-            <div className="text-white/10 flex select-none">
-              {personalInfo.brandName.split("").map((char, index) => (
-                <span key={index}>{char}</span>
-              ))}
-              <span>.</span>
-            </div>
-
-            {/* Foreground text */}
-            <div className="absolute top-0 left-0 text-white flex select-none">
-              {personalInfo.brandName.split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, y: 15, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 220,
-                    damping: 12,
-                    delay: index * 0.04 + 0.2
-                  }}
-                >
-                  {char}
-                </motion.span>
-              ))}
+            {/* Central pulsing Monogram R */}
+            <div className="absolute inset-0 flex items-center justify-center">
               <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: 'spring', stiffness: 300, delay: personalInfo.brandName.length * 0.04 + 0.3 }}
-                className="text-gold-primary"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: [0.95, 1.05, 0.95], opacity: 1 }}
+                transition={{
+                  scale: { repeat: Infinity, duration: 2.0, ease: 'easeInOut' },
+                  opacity: { duration: 0.5 }
+                }}
+                className="text-gold-primary text-3xl md:text-4.5xl font-black font-serif italic tracking-tighter"
               >
-                .
+                R
               </motion.span>
             </div>
+          </div>
+
+          {/* Brand Name Text animation */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-8 text-center"
+          >
+            <h2 className="text-white text-lg md:text-xl font-bold tracking-[0.3em] uppercase select-none">
+              MOHAMED RAFI<span className="text-gold-primary">.</span>
+            </h2>
           </motion.div>
 
-          {/* Dynamic Business Sector taglines that cycle based on load percentage */}
-          <div className="h-10 mt-6 flex items-center justify-center">
+          {/* Cycling Taglines */}
+          <div className="h-8 mt-4 flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.p
                 key={getBusinessSectorText(progress)}
-                initial={{ opacity: 0, y: 6 }}
+                initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.22, ease: 'easeOut' }}
-                className="text-gold-primary text-xs md:text-sm font-black tracking-[0.2em] uppercase text-center px-6 max-w-lg select-none"
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="text-gold-primary/80 text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-center px-6 max-w-md select-none"
               >
                 {getBusinessSectorText(progress)}
               </motion.p>
             </AnimatePresence>
           </div>
 
-          {/* Progress bar synced to the actual load timer */}
-          <motion.div 
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
-            className="mt-6 w-40 md:w-56 h-[3px] rounded-full bg-white/10 overflow-hidden origin-center"
-          >
-            <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-amber-600 via-gold-primary to-yellow-400"
-              initial={{ width: '0%' }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.1, ease: 'linear' }}
-            />
-          </motion.div>
-
-          {/* Live percentage counter */}
-          <motion.span
+          {/* Live Progress Count */}
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mt-3 text-slate-450 text-[11px] font-bold tracking-widest font-mono select-none"
+            className="mt-6 text-slate-500 text-xs font-mono font-bold tracking-widest"
           >
-            {progress}%
-          </motion.span>
+            <span className="text-gold-primary tabular-nums">{progress}</span>
+            <span className="text-slate-600">%</span>
+          </motion.div>
 
           <style>{`
-            .preloader-orb { animation: preloader-drift 12s ease-in-out infinite; }
+            .preloader-glow { animation: preloader-drift 10s ease-in-out infinite; }
             @keyframes preloader-drift {
               0%, 100% { transform: translate(0, 0) scale(1); }
-              50%      { transform: translate(5%, -5%) scale(1.1); }
+              50%      { transform: translate(3%, -3%) scale(1.08); }
             }
-
-            .preloader-ring {
-              background: conic-gradient(
-                from 0deg,
-                transparent 0deg,
-                rgba(226, 184, 87, 0.45) 90deg,
-                transparent 180deg,
-                rgba(197, 168, 92, 0.45) 270deg,
-                transparent 360deg
-              );
-              mask: radial-gradient(closest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
-              -webkit-mask: radial-gradient(closest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
-              animation: preloader-spin 3.5s linear infinite;
-            }
-            @keyframes preloader-spin {
-              to { transform: rotate(360deg); }
-            }
-
             @media (prefers-reduced-motion: reduce) {
-              .preloader-orb, .preloader-ring { animation: none; }
+              .preloader-glow { animation: none; }
             }
           `}</style>
         </motion.div>

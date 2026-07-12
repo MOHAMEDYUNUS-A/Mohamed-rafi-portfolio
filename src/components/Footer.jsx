@@ -1,5 +1,6 @@
 import React from 'react';
-import { personalInfo, socialLinks, footerContent } from '../data/portfolioData';
+import { personalInfo, socialLinks, logisticsData, hrData } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 
 const SocialIcon = ({ href, label, path }) => (
   <a
@@ -7,7 +8,7 @@ const SocialIcon = ({ href, label, path }) => (
     target="_blank"
     rel="noopener noreferrer"
     aria-label={label}
-    className="flex items-center justify-center w-11 h-11 rounded-xl border border-white/5 text-[#a3a3a3] hover:text-white hover:border-gold-primary/45 hover:bg-gradient-to-br hover:from-amber-600/10 hover:via-gold-primary/10 hover:to-yellow-300/10 hover:scale-105 transition-all duration-350 shadow-md"
+    className="flex items-center justify-center w-11 h-11 rounded-xl border border-slate-800/60 text-[#8e8e8e] hover:text-slate-50 hover:border-gold-primary/40 hover:bg-gradient-to-br hover:from-amber-600/10 hover:via-gold-primary/10 hover:to-yellow-300/10 hover:scale-105 transition-all duration-300 shadow-md cursor-pointer"
   >
     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
       <path d={path} />
@@ -20,76 +21,85 @@ const scrollToTop = () => {
 };
 
 const Footer = () => {
+  const { portfolioMode } = usePortfolio();
+  const footerContent = portfolioMode === 'logistics' ? logisticsData.footer : hrData.footer;
+
   return (
-    <footer className="relative bg-[#07090f] text-[#a3a3a3] py-20 px-6 md:px-12 w-full font-sans text-xs flex flex-col justify-between min-h-[45vh] overflow-hidden border-t border-gold-primary/10">
+    <footer className="relative bg-slate-darker text-slate-400 py-20 px-6 md:px-12 w-full font-sans text-xs flex flex-col justify-between min-h-[48vh] overflow-hidden border-t border-gold-primary/10">
 
-      {/* Signature top glowing line */}
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-amber-600/0 via-gold-primary/40 to-yellow-350/0" />
+      {/* Luxury gold glowing top border */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-amber-600/0 via-gold-primary/30 to-yellow-350/0" />
 
-      {/* Grid and ambient glows */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2b85701_1px,transparent_1px),linear-gradient(to_bottom,#e2b85701_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] bg-gold-primary/[0.015] rounded-full blur-[140px] pointer-events-none" />
+      {/* Mesh lines pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2b85701_1px,transparent_1px),linear-gradient(to_bottom,#e2b85701_1px,transparent_1px)] bg-[size:80px_80px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] bg-gold-primary/[0.012] rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto w-full relative z-10 flex-1 flex flex-col justify-between gap-12">
-        {/* Top Row Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full pb-10 border-b border-white/5 font-medium text-left">
-          <div className="flex flex-col gap-2">
-            <span className="text-gold-primary/50 text-[10px] font-mono font-bold tracking-[0.2em] uppercase mb-1">Core Focus</span>
+      <div className="max-w-6xl mx-auto w-full relative z-10 flex-1 flex flex-col justify-between gap-16">
+        
+        {/* Top Info Grid - Flexbox to center vertical dividers */}
+        <div className="flex flex-col md:flex-row gap-10 w-full pb-10 border-b border-gold-primary/15 font-medium text-left">
+          {/* Column 1 */}
+          <div className="flex-1 flex flex-col gap-2.5">
+            <span className="text-gold-primary/40 text-[9.5px] font-mono font-bold tracking-[0.25em] uppercase mb-1">Core Focus</span>
             {footerContent.taglines.map((line, i) => (
-              <p key={i} className="text-white/80 hover:text-gold-primary transition-colors duration-300 font-semibold">{line}</p>
+              <p key={i} className="text-slate-200/90 hover:text-gold-primary transition-colors duration-300 font-semibold text-sm leading-snug">{line}</p>
             ))}
           </div>
           
-          <div className="flex flex-col gap-2 md:items-center text-left md:text-center">
-            <span className="text-gold-primary/50 text-[10px] font-mono font-bold tracking-[0.2em] uppercase mb-1">Education & Credential</span>
-            <p className="text-white/80 max-w-xs font-semibold leading-relaxed">{footerContent.credential}</p>
+          {/* Column 2 */}
+          <div className="flex-1 flex flex-col gap-2.5 md:items-center text-left md:text-center border-y md:border-y-0 md:border-x border-gold-primary/15 py-6 md:py-0 md:px-8">
+            <span className="text-gold-primary/40 text-[9.5px] font-mono font-bold tracking-[0.25em] uppercase mb-1">Education & Credential</span>
+            <p className="text-slate-300/80 max-w-xs font-semibold leading-relaxed text-sm">{footerContent.credential}</p>
             <a
               href="#projects"
-              className="inline-flex items-center gap-1.5 text-gold-primary hover:text-gold-light font-bold transition-colors mt-2"
+              className="inline-flex items-center gap-1 text-gold-primary hover:text-gold-light font-bold transition-colors mt-2 text-xs uppercase tracking-wider cursor-pointer"
             >
               Explore Operations Records →
             </a>
           </div>
           
-          <div className="flex flex-col gap-2 md:items-end text-left md:text-right">
-            <span className="text-gold-primary/50 text-[10px] font-mono font-bold tracking-[0.2em] uppercase mb-1">Availability</span>
-            <p className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-350 text-[10.5px] font-black tracking-widest uppercase shadow-inner">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+          {/* Column 3 */}
+          <div className="flex-1 flex flex-col gap-2.5 md:items-end text-left md:text-right">
+            <span className="text-gold-primary/40 text-[9.5px] font-mono font-bold tracking-[0.25em] uppercase mb-1">Availability</span>
+            <p className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black tracking-widest uppercase shadow-inner">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Active Executive BD
             </p>
-            <p className="text-white/40 font-mono mt-1 text-[11px]">KSA Resident · Transferable Iqama</p>
+            <p className="text-slate-550 font-mono mt-1 text-[10.5px]">KSA Resident · Transferable Iqama</p>
           </div>
         </div>
 
-        {/* Middle Watermark Name */}
-        <div className="relative w-full flex justify-center items-center py-6 select-none overflow-hidden">
-          <h2 className="text-[12vw] leading-none font-black tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-amber-600/[0.025] via-gold-primary/[0.055] to-yellow-450/[0.025] hover:from-amber-600/[0.055] hover:via-gold-primary/[0.085] hover:to-yellow-450/[0.055] transition-all duration-700 w-full text-center">
+        {/* Large Luxury Text Watermark */}
+        <div className="relative w-full flex justify-center items-center py-6 select-none overflow-hidden footer-watermark-wrapper">
+          <h2 className="text-[7.5vw] font-black tracking-[0.3em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-slate-400/[0.04] via-gold-primary/[0.08] to-slate-400/[0.04] w-full text-center leading-none footer-pulse">
             MOHAMED RAFI
           </h2>
         </div>
 
-        {/* Bottom Row Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full items-center pt-8 border-t border-white/5 font-medium text-left">
-          <div className="flex flex-col gap-2">
+        {/* Bottom copyright and actions */}
+        <div className="flex flex-col md:flex-row justify-between gap-10 w-full items-center pt-8 border-t border-gold-primary/15 font-medium text-left">
+          
+          {/* Copyright link */}
+          <div className="flex-1 flex flex-col gap-2">
             <a
               href="#contact"
-              className="text-white hover:text-gold-primary transition-colors font-bold text-sm uppercase tracking-wider"
+              className="text-slate-200 hover:text-gold-primary transition-colors font-bold text-sm uppercase tracking-wider cursor-pointer"
             >
               Start Corporate Discussion
             </a>
-            <p className="text-slate-500 text-[10px] font-semibold leading-normal">
+            <p className="text-slate-500 text-[9.5px] font-mono">
               {footerContent.copyright.replace('Tailwind', 'Tailwind v4')}
             </p>
           </div>
           
-          <div className="flex flex-col gap-3 md:items-center">
+          {/* Mail & Socials */}
+          <div className="flex-1 flex flex-col gap-3.5 md:items-center">
             <a
               href={`mailto:${personalInfo.emails.primary}`}
-              className="text-slate-350 hover:text-white font-mono text-sm transition-colors font-semibold"
+              className="text-slate-350 hover:text-slate-100 font-mono text-sm transition-colors font-semibold"
             >
               {personalInfo.emails.primary}
             </a>
-            {/* Social Links */}
             <div className="flex items-center gap-3">
               <SocialIcon
                 href={socialLinks.linkedin}
@@ -99,18 +109,34 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="flex flex-col gap-3 md:items-end text-left md:text-right">
+          {/* Scroll To Top button */}
+          <div className="flex-1 flex flex-col gap-3.5 md:items-end text-left md:text-right">
             <button
               type="button"
               onClick={scrollToTop}
               aria-label="Back to top"
-              className="flex items-center gap-2 hover:text-white transition-colors duration-300 group cursor-pointer font-bold uppercase tracking-wider text-[11px] text-slate-400"
+              className="relative inline-flex items-center justify-center p-3.5 rounded-full border border-slate-800/80 hover:border-gold-primary/60 text-slate-500 hover:text-gold-primary hover:bg-gold-primary/5 transition-all duration-300 group cursor-pointer"
             >
-              Back to top ↑
+              <svg className="w-4 h-4 transform group-hover:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
             </button>
           </div>
         </div>
       </div>
+
+      <style>{`
+        .footer-pulse {
+          animation: footer-text-glow 6s ease-in-out infinite;
+        }
+        @keyframes footer-text-glow {
+          0%, 100% { filter: drop-shadow(0 0 0px transparent); opacity: 0.85; }
+          50%      { filter: drop-shadow(0 0 4px rgba(226,184,87,0.15)); opacity: 1; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .footer-pulse { animation: none; }
+        }
+      `}</style>
     </footer>
   );
 };

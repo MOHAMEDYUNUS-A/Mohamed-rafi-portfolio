@@ -120,7 +120,7 @@ const BusinessGallery = () => {
   }, [activeCategory]);
 
   return (
-    <section id="gallery" className="bg-[#0b0f19] pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10">
+    <section id="gallery" className="bg-slate-primary pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10">
       
       {/* Background drifting glows */}
       <div className="absolute top-1/4 -left-10 w-96 h-96 bg-gold-primary/5 rounded-full blur-[140px] pointer-events-none" />
@@ -129,11 +129,11 @@ const BusinessGallery = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Header */}
-        <div data-aos="fade-up" className="mb-16 text-center">
+        <div data-aos="reveal-up" className="mb-16 text-center">
           <div className="inline-block border border-gold-primary/20 rounded-full px-5 py-1.5 text-sm text-gold-primary font-bold mb-6 shadow-sm bg-slate-900/50 backdrop-blur-sm">
             Business Gallery
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4 uppercase">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-50 tracking-tight mb-4 uppercase">
             Operations & Projects Showcase
           </h2>
           <p className="text-slate-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
@@ -142,7 +142,7 @@ const BusinessGallery = () => {
         </div>
 
         {/* Categories Tab Selector - responsive scrollable */}
-        <div data-aos="fade-up" className="flex justify-start md:justify-center overflow-x-auto pb-4 mb-12 scrollbar-none gap-3">
+        <div data-aos="reveal-up" className="flex justify-start md:justify-center overflow-x-auto pb-4 mb-12 scrollbar-none gap-3">
           <div className="flex flex-nowrap gap-3 px-2 md:px-0">
             {CATEGORIES.map(cat => {
               const isActive = activeCategory === cat.id;
@@ -153,7 +153,7 @@ const BusinessGallery = () => {
                   className={`px-5 py-2.5 rounded-full text-xs font-black tracking-widest uppercase transition-all duration-300 border cursor-pointer ${
                     isActive
                       ? 'bg-gradient-to-r from-amber-600 to-gold-primary text-black border-gold-primary shadow-[0_10px_20px_rgba(226,184,87,0.2)]'
-                      : 'bg-slate-950/60 text-slate-400 border-gold-primary/10 hover:text-white hover:border-gold-primary/30'
+                      : 'bg-slate-950/60 text-slate-400 border-gold-primary/10 hover:text-slate-50 hover:border-gold-primary/30'
                   }`}
                 >
                   {cat.label}
@@ -185,6 +185,7 @@ const BusinessGallery = () => {
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
                   {/* Dark transparent gradient overlay */}
@@ -196,7 +197,7 @@ const BusinessGallery = () => {
                   <span className="bg-gold-primary/10 text-gold-primary text-[8px] font-black tracking-widest uppercase py-0.5 px-2.5 rounded-full border border-gold-primary/20 mb-2">
                     {item.category}
                   </span>
-                  <h3 className="text-white text-base font-black tracking-tight leading-tight group-hover:text-gold-primary transition-colors">
+                  <h3 className="text-slate-50 text-base font-black tracking-tight leading-tight group-hover:text-gold-primary transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-slate-400 text-xs font-medium line-clamp-2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 leading-normal">

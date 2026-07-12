@@ -1,11 +1,14 @@
 import React, { useRef, useEffect, useState, useMemo, useCallback } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { heroContent, personalInfo, socialLinks } from "../data/portfolioData";
+import { personalInfo, socialLinks, logisticsData, hrData } from "../data/portfolioData";
+import { usePortfolio } from "../context/PortfolioContext";
 import { motion, useScroll, useTransform } from "framer-motion";
 import rafiBgRemoved from '../assets/about/rafi bg removed.png'; // User's background removed photo
 
 const Hero = () => {
+  const { portfolioMode } = usePortfolio();
+  const heroContent = portfolioMode === 'logistics' ? logisticsData.hero : hrData.hero;
   const sectionRef = useRef(null);
   const rafRef = useRef(null);
   const [spot, setSpot] = useState({ x: 50, y: 50 });
@@ -47,6 +50,29 @@ const Hero = () => {
     setTilt({ x: 0, y: 0 });
   }, []);
 
+  const triggerCvDownload = async (e, href) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(href);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = "Mohamed Rafi Niyaz Deen-CV.pdf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (err) {
+      console.error("Blob download failed, falling back to direct link", err);
+      const link = document.createElement('a');
+      link.href = href;
+      link.download = "Mohamed Rafi Niyaz Deen-CV.pdf";
+      link.target = "_blank";
+      link.click();
+    }
+  };
+
   // Ambient floating gold particles
   const particles = useMemo(
     () =>
@@ -68,7 +94,7 @@ const Hero = () => {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full min-h-screen pt-24 lg:pt-0 overflow-hidden bg-[#080c14] flex items-center border-b border-gold-primary/15"
+      className="relative w-full min-h-screen pt-20 pb-20 lg:pt-22 lg:pb-20 overflow-hidden bg-slate-dark flex items-center border-b border-gold-primary/15"
       aria-label={`${personalInfo.name} portfolio hero section`}
     >
       {/* Premium Looping Background Video */}
@@ -119,15 +145,15 @@ const Hero = () => {
       </div>
 
       {/* Luxury atmospheric overlays */}
-      <div className="absolute inset-0 z-10 bg-[#080c14]/70" />
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#080c14] via-[#080c14]/30 to-transparent" />
+      <div className="absolute inset-0 z-10 bg-slate-dark/70" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-slate-dark via-slate-dark/30 to-transparent" />
       
       {/* Auroral glows */}
-      <div className="absolute top-[-10%] left-[-10%] w-[55%] h-[55%] z-[8] pointer-events-none rounded-full blur-[140px] opacity-10 bg-[#e2b857]" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] z-[8] pointer-events-none rounded-full blur-[140px] opacity-10 bg-[#c5a85c]" />
+      <div className="absolute top-[-10%] left-[-10%] w-[55%] h-[55%] z-[8] pointer-events-none rounded-full blur-[140px] opacity-[var(--glow-opacity-10)] bg-gold-primary" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] z-[8] pointer-events-none rounded-full blur-[140px] opacity-[var(--glow-opacity-10)] bg-gold-dark" />
 
       {/* Content Container Grid */}
-      <div className="relative z-20 px-6 py-12 lg:py-0 lg:px-12 max-w-7xl mx-auto w-full">
+      <div className="relative z-20 px-6 py-8 md:py-12 lg:py-16 lg:px-12 max-w-7xl mx-auto w-full">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
           
@@ -152,7 +178,7 @@ const Hero = () => {
             </motion.div>
 
             {/* Main Name Heading - word delays sync to preloader load duration */}
-            <h1 className="text-white text-[44px] leading-[1.05] md:text-[68px] lg:text-[76px] font-black mb-6 tracking-tight drop-shadow-[0_12px_40px_rgba(0,0,0,0.65)] select-none">
+            <h1 className="text-slate-50 text-[44px] leading-[1.05] md:text-[68px] lg:text-[76px] font-black mb-6 tracking-tight drop-shadow-[0_12px_40px_rgba(0,0,0,0.65)] select-none">
               <span className="block overflow-hidden py-1">
                 {/* Mohamed Rafi (Large bold size) */}
                 <span
@@ -181,7 +207,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, ease: "easeOut", delay: 2.6 }}
-              className="text-xl md:text-3xl font-extrabold tracking-wide mb-6 bg-gradient-to-r from-white via-[#fbf7ee] to-[#e2b857] bg-clip-text text-transparent drop-shadow-sm font-sans uppercase text-left"
+              className="text-xl md:text-3xl font-extrabold tracking-wide mb-6 bg-gradient-to-r from-slate-50 via-slate-350 to-gold-primary bg-clip-text text-transparent drop-shadow-sm font-sans uppercase text-left"
             >
               {personalInfo.title}
             </motion.div>
@@ -233,7 +259,8 @@ const Hero = () => {
 
               <a
                 href={heroContent.ctaResume.href}
-                download
+                onClick={(e) => triggerCvDownload(e, heroContent.ctaResume.href)}
+                download="Mohamed Rafi Niyaz Deen-CV.pdf"
                 className="shine-btn relative overflow-hidden px-8 py-4 text-sm md:text-base rounded-full bg-slate-950 border border-gold-primary/35 text-gold-primary font-black hover:bg-gold-primary hover:text-black hover:border-gold-primary transition-all duration-300 flex items-center gap-2 shadow-inner transform hover:-translate-y-1 cursor-pointer"
               >
                 <svg
@@ -265,6 +292,10 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 2.35 }}
               className="relative w-full max-w-[320px] lg:max-w-[400px] flex items-end justify-center z-10"
+              style={{
+                maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)'
+              }}
             >
               <img
                 src={rafiBgRemoved}

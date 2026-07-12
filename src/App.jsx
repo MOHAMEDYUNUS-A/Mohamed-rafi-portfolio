@@ -1,4 +1,5 @@
 import React from 'react'
+import { PortfolioProvider } from './context/PortfolioContext'
 import Preloader from './components/Preloader'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -18,7 +19,7 @@ import RecruiterBot from './components/RecruiterBot'
 
 function App() {
   return (
-    <>
+    <PortfolioProvider>
       <Preloader />
       <Navbar />
       <Hero />
@@ -35,7 +36,7 @@ function App() {
       <Contact />
       <Footer />
       <RecruiterBot />
-    </>
+    </PortfolioProvider>
   )
 }
 

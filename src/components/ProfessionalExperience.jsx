@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { internshipsList } from '../data/portfolioData'; // Uses internshipsList from central data
+import { logisticsData, hrData } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 
 // Import real corporate logo image files uploaded in assets
 import workforceLogo from '../assets/Workforce.png';
@@ -15,25 +16,25 @@ const CompanyLogo = ({ name }) => {
   const normName = name.toLowerCase();
 
   if (normName.includes('workforce saudia')) {
-    return <img src={workforceLogo} alt="Workforce Saudia Logo" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={workforceLogo} alt="Workforce Saudia Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('techpulse')) {
-    return <img src={techpulseLogo} alt="TechPulse Global Logo" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={techpulseLogo} alt="TechPulse Global Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('wr logistics')) {
-    return <img src={wrLogisticsLogo} alt="WR Logistics Logo" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={wrLogisticsLogo} alt="WR Logistics Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('schmidt')) {
-    return <img src={schmidtLogo} alt="Schmidt ME Logo" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={schmidtLogo} alt="Schmidt ME Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('jaddarah')) {
-    return <img src={jaddarahLogo} alt="Jaddarah Logo" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={jaddarahLogo} alt="Jaddarah Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('plus max')) {
-    return <img src={plusmaxLogo} alt="Plus Max Logo" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={plusmaxLogo} alt="Plus Max Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('coastline')) {
-    return <img src={coastlineLogo} alt="Coastline Logo" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={coastlineLogo} alt="Coastline Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
   }
 
   // Fallback generic business building icon
@@ -73,7 +74,7 @@ const ExperienceCard = ({ exp, index }) => {
   return (
     <div
       ref={ref}
-      data-aos="fade-up"
+      data-aos="reveal-up"
       data-aos-delay={index * 100}
       className="group relative bg-slate-950/60 backdrop-blur-md border border-gold-primary/15 rounded-3xl p-8 hover:-translate-y-1 hover:scale-[1.01] hover:border-gold-primary/40 hover:bg-slate-950/80 hover:shadow-[0_20px_50px_rgba(226,184,87,0.05)] transition-all duration-500 flex flex-col justify-between mobile-optimized"
     >
@@ -99,7 +100,7 @@ const ExperienceCard = ({ exp, index }) => {
           </div>
         </div>
 
-        <h3 className="text-white text-2xl font-black mb-1 tracking-tight group-hover:text-gold-primary transition-colors">{exp.role}</h3>
+        <h3 className="text-slate-50 text-2xl font-black mb-1 tracking-tight group-hover:text-gold-primary transition-colors">{exp.role}</h3>
         <p className="text-gold-light text-sm font-black tracking-wide mb-6 uppercase">
           {exp.organization}
         </p>
@@ -153,22 +154,24 @@ const ExperienceCard = ({ exp, index }) => {
 };
 
 const ProfessionalExperience = () => {
+  const { portfolioMode } = usePortfolio();
+  const internshipsList = portfolioMode === 'logistics' ? logisticsData.experience : hrData.experience;
   return (
-    <section id="experience" className="bg-[#080c14] pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10">
+    <section id="experience" className="bg-slate-dark pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10">
       {/* Ambient drifting glow orbs */}
-      <div className="absolute top-10 -left-1/4 w-[55%] h-[55%] pointer-events-none rounded-full blur-[130px] opacity-10 bg-gold-primary experience-orb" />
+      <div className="absolute top-10 -left-1/4 w-[55%] h-[55%] pointer-events-none rounded-full blur-[130px] opacity-[var(--glow-opacity-10)] bg-gold-primary experience-orb" />
       <div
-        className="absolute -bottom-1/4 right-0 w-[45%] h-[45%] pointer-events-none rounded-full blur-[130px] opacity-5 bg-amber-600 experience-orb"
+        className="absolute -bottom-1/4 right-0 w-[45%] h-[45%] pointer-events-none rounded-full blur-[130px] opacity-[var(--glow-opacity-5)] bg-amber-600 experience-orb"
         style={{ animationDelay: '-6s', animationDirection: 'reverse' }}
       />
 
       <div className="max-w-6xl mx-auto relative z-20">
         {/* Header */}
-        <div data-aos="fade-up" className="mb-16 md:mb-20 text-center">
+        <div data-aos="reveal-up" className="mb-16 md:mb-20 text-center">
           <div className="inline-block border border-gold-primary/20 rounded-full px-5 py-1.5 text-sm text-gold-primary font-bold mb-6 shadow-sm bg-slate-900/50 backdrop-blur-sm">
             Timeline
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight uppercase">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-50 mb-4 tracking-tight uppercase">
             Professional Experience
           </h2>
           <p className="text-slate-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">

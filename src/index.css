@@ -1,13 +1,127 @@
 @import "tailwindcss";
 
+:root {
+  /* Core theme variables (Dark mode default) */
+  --bg-body: #080c14;
+  --text-body: #f8fafc;
+
+  /* Custom theme layers */
+  --slate-dark: #080c14;
+  --slate-primary: #0b0f19;
+  --slate-secondary: #0a0e17;
+  --slate-darker: #07090f;
+  --slate-light: #1e293b;
+
+  /* Standard tailwind scale mapped variables */
+  --slate-950: #020617;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-350: #b8c4d9;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+
+  /* Gold accents */
+  --gold-light: #f5ebd1;
+  --gold-primary: #e2b857;
+  --gold-dark: #c5a85c;
+  --gold-accent: #d4af37;
+
+  /* Atmospheric opacity values */
+  --glow-opacity-15: 0.15;
+  --glow-opacity-10: 0.10;
+  --glow-opacity-5: 0.05;
+
+  /* Borders */
+  --border-gold-10: rgba(226, 184, 87, 0.1);
+  --border-gold-15: rgba(226, 184, 87, 0.15);
+  --border-gold-20: rgba(226, 184, 87, 0.2);
+  --border-gold-30: rgba(226, 184, 87, 0.3);
+  --border-gold-35: rgba(226, 184, 87, 0.35);
+
+  --text-gradient-start: #ffffff;
+  --text-gradient-middle: #f5ebd1;
+  --text-gradient-end: #e2b857;
+}
+
+.light {
+  /* Core theme variables (Light mode override) */
+  --bg-body: #f8fafc;
+  --text-body: #1e293b;
+
+  /* Custom theme layers */
+  --slate-dark: #f8fafc;
+  --slate-primary: #f1f5f9;
+  --slate-secondary: #e2e8f0;
+  --slate-darker: #cbd5e1;
+  --slate-light: #e2e8f0;
+
+  /* Inverted standard slate scale */
+  --slate-950: #f8fafc;
+  --slate-900: #f1f5f9;
+  --slate-800: #cbd5e1;
+  --slate-700: #94a3b8;
+  --slate-600: #64748b;
+  --slate-500: #475569;
+  --slate-400: #334155;
+  --slate-350: #1e293b;
+  --slate-300: #0f172a;
+  --slate-200: #0b0f19;
+  --slate-100: #080c14;
+  --slate-50: #020617;
+
+  /* Deeper gold accents for readability */
+  --gold-light: #7c5e12;
+  --gold-primary: #a17410;
+  --gold-dark: #7c5e12;
+  --gold-accent: #8b650f;
+
+  /* Atmospheric opacity values */
+  --glow-opacity-15: 0.08;
+  --glow-opacity-10: 0.05;
+  --glow-opacity-5: 0.02;
+
+  /* Borders */
+  --border-gold-10: rgba(161, 116, 16, 0.15);
+  --border-gold-15: rgba(161, 116, 16, 0.25);
+  --border-gold-20: rgba(161, 116, 16, 0.35);
+  --border-gold-30: rgba(161, 116, 16, 0.45);
+  --border-gold-35: rgba(161, 116, 16, 0.55);
+
+  --text-gradient-start: #0f172a;
+  --text-gradient-middle: #334155;
+  --text-gradient-end: #a17410;
+}
+
 @theme {
-  --color-gold-light: #f5ebd1;
-  --color-gold-primary: #e2b857;
-  --color-gold-dark: #c5a85c;
-  --color-gold-accent: #d4af37;
-  --color-slate-dark: #080c14;
-  --color-slate-primary: #0b0f19;
-  --color-slate-light: #1e293b;
+  --color-gold-light: var(--gold-light);
+  --color-gold-primary: var(--gold-primary);
+  --color-gold-dark: var(--gold-dark);
+  --color-gold-accent: var(--gold-accent);
+
+  --color-slate-dark: var(--slate-dark);
+  --color-slate-primary: var(--slate-primary);
+  --color-slate-secondary: var(--slate-secondary);
+  --color-slate-darker: var(--slate-darker);
+  --color-slate-light: var(--slate-light);
+
+  --color-slate-950: var(--slate-950);
+  --color-slate-900: var(--slate-900);
+  --color-slate-800: var(--slate-800);
+  --color-slate-700: var(--slate-700);
+  --color-slate-600: var(--slate-600);
+  --color-slate-500: var(--slate-500);
+  --color-slate-400: var(--slate-400);
+  --color-slate-350: var(--slate-350);
+  --color-slate-300: var(--slate-300);
+  --color-slate-200: var(--slate-200);
+  --color-slate-100: var(--slate-100);
+  --color-slate-50: var(--slate-50);
 
   --animate-float: float 6s ease-in-out infinite;
 
@@ -19,14 +133,17 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  transition: background-color 0.3s ease;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #080c14;
-  color: #f8fafc;
+  background-color: var(--bg-body);
+  color: var(--text-body);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 [data-aos="drop-bounce"] {
@@ -50,14 +167,15 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #080c14;
+  background: var(--bg-body);
+  transition: background-color 0.3s ease;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c5a85c;
+  background: var(--gold-dark);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #e2b857;
+  background: var(--gold-primary);
 }
 
 /* Hardware-accelerated transitions for smooth mobile experience */
@@ -69,8 +187,58 @@ body {
 }
 
 .text-gold-gradient {
-  background: linear-gradient(135deg, #ffffff 10%, #f5ebd1 50%, #e2b857 100%);
+  background: linear-gradient(135deg, var(--text-gradient-start) 10%, var(--text-gradient-middle) 50%, var(--text-gradient-end) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
+
+/* Premium Reveal Transitions */
+[data-aos="reveal-up"] {
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  filter: blur(4px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-aos="reveal-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+[data-aos="reveal-right"] {
+  opacity: 0;
+  transform: translateX(-50px);
+  filter: blur(4px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-aos="reveal-right"].aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+
+[data-aos="reveal-left"] {
+  opacity: 0;
+  transform: translateX(50px);
+  filter: blur(4px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-aos="reveal-left"].aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+
+[data-aos="reveal-zoom"] {
+  opacity: 0;
+  transform: scale(0.9);
+  filter: blur(4px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-aos="reveal-zoom"].aos-animate {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+

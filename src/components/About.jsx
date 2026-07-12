@@ -1,26 +1,29 @@
 import React from 'react';
-import { aboutContent, personalInfo } from '../data/portfolioData';
+import { personalInfo, logisticsData, hrData } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 import rafiPhoto from '../assets/about/Rafi image.png'; // User's uploaded picture
 
 const About = () => {
+  const { portfolioMode } = usePortfolio();
+  const aboutContent = portfolioMode === 'logistics' ? logisticsData.about : hrData.about;
   return (
     <section
       id="about"
-      className="relative w-full overflow-hidden font-sans pt-24 pb-36 px-6 md:px-12 bg-gradient-to-br from-[#0b0f19] via-[#111827] to-[#080c14] border-y border-gold-primary/10"
+      className="relative w-full overflow-hidden font-sans pt-24 pb-36 px-6 md:px-12 bg-gradient-to-br from-slate-primary via-slate-darker to-slate-dark border-y border-gold-primary/10"
     >
       {/* Executive grid accent pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(226,184,87,0.015)_25%,transparent_25%,transparent_50%,rgba(226,184,87,0.015)_50%,rgba(226,184,87,0.015)_75%,transparent_75%,transparent)] bg-[size:40px_40px] pointer-events-none" />
 
       {/* Gold atmospheric glows */}
-      <div className="glow-orb absolute -top-1/3 -right-1/4 w-[60%] h-[60%] pointer-events-none rounded-full blur-[130px] opacity-15 bg-[#e2b857] z-0" />
+      <div className="glow-orb absolute -top-1/3 -right-1/4 w-[60%] h-[60%] pointer-events-none rounded-full blur-[130px] opacity-[var(--glow-opacity-15)] bg-gold-primary z-0" />
       <div
-        className="glow-orb absolute -bottom-1/4 -left-1/4 w-[50%] h-[50%] pointer-events-none rounded-full blur-[130px] opacity-10 bg-[#c5a85c] z-0"
+        className="glow-orb absolute -bottom-1/4 -left-1/4 w-[50%] h-[50%] pointer-events-none rounded-full blur-[130px] opacity-[var(--glow-opacity-10)] bg-gold-dark z-0"
         style={{ animationDelay: '-4s', animationDirection: 'reverse' }}
       />
 
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center md:items-start relative z-10">
         {/* Left Side: ID Badge with Left-Reveal animation */}
-        <div data-aos="fade-right" data-aos-delay="100" className="flex flex-col items-center w-full md:w-[320px] shrink-0 mt-8 md:mt-0">
+        <div data-aos="reveal-right" data-aos-delay="100" className="flex flex-col items-center w-full md:w-[320px] shrink-0 mt-8 md:mt-0">
           <div className="id-badge relative flex justify-center w-full" style={{ transformOrigin: 'top center' }}>
             {/* Lanyard string */}
             <div className="absolute -top-32 left-1/2 w-2.5 h-40 bg-slate-900 transform -translate-x-1/2 shadow-inner z-0" />
@@ -45,17 +48,18 @@ const About = () => {
                 <img
                   src={rafiPhoto}
                   alt={personalInfo.name}
+                  loading="lazy"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
 
               {/* ID Details */}
               <div className="w-full flex flex-col items-center text-center font-mono">
-                <h4 className="text-white font-black tracking-wider text-[13px] uppercase">
+                <h4 className="text-slate-50 font-black tracking-wider text-[13px] uppercase">
                   {personalInfo.firstName}
                 </h4>
-                <p className="text-gold-primary text-[9px] font-bold tracking-widest uppercase mt-0.5">
-                  Business Development
+                <p className="text-gold-primary text-[8px] font-bold tracking-widest uppercase mt-0.5">
+                  {portfolioMode === 'logistics' ? 'Logistics & Automation' : 'HR & Workforce Services'}
                 </p>
 
                 {/* Simulated Barcode */}
@@ -82,8 +86,8 @@ const About = () => {
         </div>
 
         {/* Right Side: Info Content with Right-Reveal animation */}
-        <div data-aos="fade-left" data-aos-delay="200" className="flex-1 text-white mt-8 md:mt-0 text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.25)] tracking-tight">
+        <div data-aos="reveal-left" data-aos-delay="200" className="flex-1 text-slate-50 mt-8 md:mt-0 text-center md:text-left">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-50 mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.25)] tracking-tight">
             {aboutContent.heading}
           </h2>
           
@@ -99,7 +103,7 @@ const About = () => {
               {aboutContent.techStack.map((skill, index) => (
                 <span 
                   key={index}
-                  className="px-4 py-2 text-xs font-semibold rounded-full bg-slate-900 border border-gold-primary/15 text-slate-300 hover:border-gold-primary hover:text-white transition-all duration-300 shadow-sm"
+                  className="px-4 py-2 text-xs font-semibold rounded-full bg-slate-900 border border-gold-primary/15 text-slate-300 hover:border-gold-primary hover:text-slate-50 transition-all duration-300 shadow-sm"
                 >
                   {skill}
                 </span>

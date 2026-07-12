@@ -1,14 +1,15 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { skillsContent } from '../data/portfolioData';
+import { logisticsData, hrData } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 
 const TimelineCard = ({ number, title, text, index }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 50, filter: "blur(4px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ type: "spring", stiffness: 90, damping: 15, delay: index * 0.15 }}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 }}
       className="group relative flex gap-6 md:gap-8 items-start w-full"
     >
       {/* Timeline Indicator Dot */}
@@ -27,7 +28,7 @@ const TimelineCard = ({ number, title, text, index }) => {
         </span>
 
         {/* Title */}
-        <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-gold-primary transition-colors mb-3 tracking-tight">
+        <h3 className="text-xl sm:text-2xl font-black text-slate-50 group-hover:text-gold-primary transition-colors mb-3 tracking-tight">
           {title}
         </h3>
 
@@ -44,6 +45,8 @@ const TimelineCard = ({ number, title, text, index }) => {
 };
 
 const Services = () => {
+  const { portfolioMode } = usePortfolio();
+  const skillsContent = portfolioMode === 'logistics' ? logisticsData.skills : hrData.skills;
   const containerRef = useRef(null);
 
   // Scroll target for drawing the vertical line
@@ -62,7 +65,7 @@ const Services = () => {
     <section 
       id="process"
       ref={containerRef}
-      className="bg-[#0b0f19] pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10"
+      className="bg-slate-primary pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans border-b border-gold-primary/10"
     >
       {/* Background drifting glow orbs */}
       <div className="absolute top-1/3 -right-24 w-96 h-96 bg-gold-primary/5 rounded-full blur-[130px] pointer-events-none" />
@@ -75,10 +78,10 @@ const Services = () => {
           
           {/* Left Column: Sticky Title Block (5 columns wide) */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -50, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, x: 0, filter: "blur(0)" }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col items-start text-left"
           >
             {/* Badge */}
@@ -87,7 +90,7 @@ const Services = () => {
             </div>
 
             {/* Heading without bottom arrow */}
-            <h2 className="text-3.5xl md:text-5xl font-black text-white leading-[1.1] mb-6 tracking-tight relative uppercase">
+            <h2 className="text-3.5xl md:text-5xl font-black text-slate-50 leading-[1.1] mb-6 tracking-tight relative uppercase">
               {skillsContent.heading}
             </h2>
 
