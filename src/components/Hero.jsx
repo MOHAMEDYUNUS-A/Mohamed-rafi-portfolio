@@ -23,9 +23,10 @@ const Hero = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000,
+      duration: 400,
       once: true,
       easing: "ease-out",
+      offset: 50,
     });
 
     const checkMobile = () => {

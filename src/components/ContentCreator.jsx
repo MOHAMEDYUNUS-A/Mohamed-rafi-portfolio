@@ -13,7 +13,7 @@ const LinkedInIcon = () => (
 
 const CreatorIcon = ({ icon, title }) => {
   if (title.toLowerCase().includes('gpca')) {
-    return <img src={gpcaLogo} alt="GPCA logo" loading="lazy" className="w-full h-full object-contain" />;
+    return <img src={gpcaLogo} alt="GPCA logo" loading="eager" className="w-full h-full object-contain" />;
   }
   return <span className="text-3xl">{icon}</span>;
 };

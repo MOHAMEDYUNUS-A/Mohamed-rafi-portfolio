@@ -48,7 +48,7 @@ const About = () => {
                 <img
                   src={rafiPhoto}
                   alt={personalInfo.name}
-                  loading="lazy"
+                  loading="eager"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>

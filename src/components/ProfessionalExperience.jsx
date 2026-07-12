@@ -16,25 +16,25 @@ const CompanyLogo = ({ name }) => {
   const normName = name.toLowerCase();
 
   if (normName.includes('workforce saudia')) {
-    return <img src={workforceLogo} alt="Workforce Saudia Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={workforceLogo} alt="Workforce Saudia Logo" loading="eager" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('techpulse')) {
-    return <img src={techpulseLogo} alt="TechPulse Global Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={techpulseLogo} alt="TechPulse Global Logo" loading="eager" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('wr logistics')) {
-    return <img src={wrLogisticsLogo} alt="WR Logistics Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={wrLogisticsLogo} alt="WR Logistics Logo" loading="eager" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('schmidt')) {
-    return <img src={schmidtLogo} alt="Schmidt ME Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={schmidtLogo} alt="Schmidt ME Logo" loading="eager" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('jaddarah')) {
-    return <img src={jaddarahLogo} alt="Jaddarah Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={jaddarahLogo} alt="Jaddarah Logo" loading="eager" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('plus max')) {
-    return <img src={plusmaxLogo} alt="Plus Max Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={plusmaxLogo} alt="Plus Max Logo" loading="eager" className="w-full h-full object-contain rounded-xl" />;
   }
   if (normName.includes('coastline')) {
-    return <img src={coastlineLogo} alt="Coastline Logo" loading="lazy" className="w-full h-full object-contain rounded-xl" />;
+    return <img src={coastlineLogo} alt="Coastline Logo" loading="eager" className="w-full h-full object-contain rounded-xl" />;
   }
 
   // Fallback generic business building icon
